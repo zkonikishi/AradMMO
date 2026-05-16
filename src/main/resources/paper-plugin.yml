@@ -1,4 +1,4 @@
-name: Arad MMO
+name: AradMMO
 version: '${project.version}'
 main: cn.aradmmo.core.AradMmoPlugin
 api-version: '26.1'

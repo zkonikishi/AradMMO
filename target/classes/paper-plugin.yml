@@ -1,4 +1,4 @@
-name: Arad MMO
+name: AradMMO
 version: '0.1.0-SNAPSHOT'
 main: cn.aradmmo.core.AradMmoPlugin
 api-version: '26.1'
