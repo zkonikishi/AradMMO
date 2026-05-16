@@ -1,0 +1,25 @@
+id: fairy-guard
+
+display: "fairy-guard"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: archer
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  4
+  spirit:   13
+  intellect: 14
+  vitality:  7
+
+default-skin: alex

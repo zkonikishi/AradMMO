@@ -1,0 +1,25 @@
+id: witch
+
+display: "witch"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: mage-f
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  3
+  spirit:   9
+  intellect: 19
+  vitality:  7
+
+default-skin: alex

@@ -1,0 +1,25 @@
+id: shadow-dancer
+
+display: "shadow-dancer"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: shadow
+
+combat-style: assassin
+
+armor-mastery: LEATHER
+
+external: false
+
+base-attributes:
+  strength:  7
+  spirit:   17
+  intellect: 7
+  vitality:  9
+
+default-skin: alex

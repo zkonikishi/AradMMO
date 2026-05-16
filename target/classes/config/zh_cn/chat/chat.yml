@@ -1,0 +1,34 @@
+enabled: true
+separator: '<dark_gray> » </dark_gray>'
+
+bridge:
+  enabled: false
+  target: 'ALL'
+  targets: []
+  group: ''
+  channel: 'aradmmo:chat'
+  server-name: ''
+  incoming-format: '<gray>[跨服][%server%]</gray> '
+  groups:
+    survival:
+      - 'survival-1'
+      - 'survival-2'
+    dungeon:
+      - 'dungeon-1'
+      - 'dungeon-2'
+
+rules:
+  admin:
+    index: 40
+    permission: 'aradmmo.chat.admin'
+    range: 0
+    format: '[admin][world][player]: '
+    item: true
+    itemformat: '<gold>[<aqua>%s</aqua>]</gold>'
+  default:
+    index: 50
+    permission: 'aradmmo.chat.default'
+    range: 0
+    format: '[world][player]: '
+    item: true
+    itemformat: '<gold>[<aqua>%s</aqua>]</gold>'

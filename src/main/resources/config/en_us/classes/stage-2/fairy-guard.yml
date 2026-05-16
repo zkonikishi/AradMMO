@@ -1,0 +1,38 @@
+# ----------------------------------------
+# Class definition: Fairy Guard (fairy-guard)
+# ----------------------------------------
+
+# Unique class ID (usually no need to change)
+id: fairy-guard
+
+# Display name shown in game
+display: "Fairy Guard"
+
+# Gender restriction: any | male | female
+gender: female
+
+# Class stage: 0=adventurer 1=base class 2=advancement
+stage: 2
+
+# Required level to unlock
+requires-level: 20
+
+# Parent class ID (empty for adventurer)
+parent: archer
+
+# Combat style (balanced/melee/ranged/magic/tank/assassin)
+combat-style: magic
+
+# Whether this is an external class (auto-unlocked and hidden from advancement menus)
+external: false
+
+# Base attributes (starting values before point allocation)
+base-attributes:
+  strength:  4
+  spirit:   13
+  intellect: 14
+  vitality:  7
+
+# Default preview skin
+# Allowed values: steve | alex | skin-station player name | url:https://... | base64:eyJ...
+default-skin: alex

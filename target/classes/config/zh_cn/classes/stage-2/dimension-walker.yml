@@ -1,0 +1,25 @@
+id: dimension-walker
+
+display: "dimension-walker"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: mage-m
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  3
+  spirit:   8
+  intellect: 20
+  vitality:  7
+
+default-skin: steve

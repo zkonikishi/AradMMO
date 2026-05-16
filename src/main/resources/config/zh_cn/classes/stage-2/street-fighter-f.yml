@@ -1,0 +1,24 @@
+id: street-fighter-f
+
+display: "street-fighter-f"
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: fighter-f
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  17
+  spirit:   10
+  intellect: 2
+  vitality:  13
+
+default-skin: alex

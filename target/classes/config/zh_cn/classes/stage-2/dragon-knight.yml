@@ -1,0 +1,25 @@
+id: dragon-knight
+
+display: "dragon-knight"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: guardian
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  14
+  spirit:   8
+  intellect: 5
+  vitality:  15
+
+default-skin: alex

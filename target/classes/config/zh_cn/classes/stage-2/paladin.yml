@@ -1,0 +1,25 @@
+id: paladin
+
+display: "paladin"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: guardian
+
+combat-style: tank
+
+armor-mastery: PLATE
+
+external: false
+
+base-attributes:
+  strength:  10
+  spirit:   7
+  intellect: 8
+  vitality:  17
+
+default-skin: alex

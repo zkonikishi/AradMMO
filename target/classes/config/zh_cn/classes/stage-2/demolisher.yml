@@ -1,0 +1,24 @@
+id: demolisher
+
+display: "demolisher"
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: gunner-m
+
+combat-style: ranged
+
+armor-mastery: LEATHER
+
+external: false
+
+base-attributes:
+  strength:  7
+  spirit:   15
+  intellect: 7
+  vitality:  9
+
+default-skin: steve

@@ -1,0 +1,25 @@
+id: creator
+
+display: "creator"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: adventurer
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: true
+
+base-attributes:
+  strength:  4
+  spirit:   8
+  intellect: 18
+  vitality:  10
+
+default-skin: alex

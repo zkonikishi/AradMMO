@@ -1,0 +1,136 @@
+command:
+  help:
+    header: '<gold>Arad MMO Command Help</gold>'
+    help: '<yellow>/am help</yellow> <gray>- Show command help</gray>'
+    reload: '<yellow>/am reload</yellow> <gray>- Reload config and language bundles</gray>'
+    lang: '<yellow>/am lang</yellow> <gray>- Show current locale</gray>'
+    profile: '<yellow>/am profile [player]</yellow> <gray>- Show character profile</gray>'
+    addxp: '<yellow>/am addxp <player> <amount></yellow> <gray>- Add experience</gray>'
+    money: '<yellow>/am money <set|add|take> <player> <amount></yellow> <gray>- Manage balance</gray>'
+    vip: '<yellow>/am vip <player> <tier></yellow> <gray>- Set VIP tier</gray>'
+    class: '<yellow>/am class <player> <class></yellow> <gray>- Set class and reset growth allocation</gray>'
+    stats: '<yellow>/am stats [player]</yellow> <gray>- Show attributes and remaining stat points</gray>'
+    stat: '<yellow>/am stat <player> <attribute> <amount></yellow> <gray>- Allocate stat points</gray>'
+    resetstats: '<yellow>/am resetstats <player></yellow> <gray>- Reset attribute allocation and refund points</gray>'
+    skills: '<yellow>/am skills [player]</yellow> <gray>- Show skill tree</gray>'
+    skill: '<yellow>/am skill <player> <skill> <amount></yellow> <gray>- Allocate skill points</gray>'
+    cast: '<yellow>/am cast <skill></yellow> <gray>- Activate a skill</gray>'
+    menu: '<yellow>/am menu</yellow> <gray>- Open character menu</gray>'
+    pet: '<yellow>/am pet <info|skills|learn|mode|give></yellow> <gray>- Pet info/skills GUI/mode/learn/give</gray>'
+    top: '<yellow>/am top [level|balance]</yellow> <gray>- Show leaderboard</gray>'
+    gender: '<yellow>/am gender [player] <male|female></yellow> <gray>- Set character gender</gray>'
+    element: '<yellow>/am element <player> <attack|resist> <element> <value></yellow> <gray>- Set element attack/resist</gray>'
+  reload:
+    done: '<green>Arad MMO reloaded successfully.</green>'
+  lang:
+    current: '<gray>Current locale:</gray> <aqua>%locale%</aqua>'
+  profile:
+    header: '<gold>%player% Profile</gold>'
+    level: '<gray>Level:</gray> <aqua>%value%</aqua>'
+    exp: '<gray>Experience:</gray> <aqua>%value%</aqua><gray>/</gray><aqua>%needed%</aqua>'
+    balance: '<gray>Balance:</gray> <gold>%value%</gold>'
+    vip: '<gray>VIP:</gray> <light_purple>%value%</light_purple>'
+    class: '<gray>Class:</gray> <green>%value%</green>'
+    points: '<gray>Available points:</gray> <yellow>stat %stat%</yellow> <gray>/</gray> <yellow>skill %skill%</yellow>'
+  addxp:
+    done: '<green>Added %value% experience to %player%. Current level: %level%.</green>'
+    level-up: '<gold>%player% gained %value% level(s), %stat% stat points, and %skill% skill points.</gold>'
+  money:
+    done: '<green>Applied %mode% and %player% now has %value% balance.</green>'
+  vip:
+    done: '<green>Set %player% VIP tier to %value%.</green>'
+  class:
+    done: '<green>Set %player% class to %value% and reset growth allocation.</green>'
+    advance-done: '<gold>%player% has advanced to %value%!</gold>'
+    locked: '<yellow>Requires level %level% to unlock this class path.</yellow>'
+  stats:
+    header: '<gold>%player% Attributes</gold>'
+    points: '<gray>Remaining stat points:</gray> <yellow>%value%</yellow>'
+    entry: '<gray>%attribute%:</gray> <aqua>%value%</aqua>'
+  stat:
+    done: '<green>%player% %attribute% is now %value% with %points% stat points left.</green>'
+  resetstats:
+    done: '<green>Reset %player%''s attribute allocation. Stat points refunded, now at %points%.</green>'
+  skills:
+    header: '<gold>%player% Skill Tree</gold>'
+    points: '<gray>Remaining skill points:</gray> <yellow>%value%</yellow>'
+    empty: '<gray>No skills have been learned yet.</gray>'
+    entry: '<gray>%skill%:</gray> <aqua>%value%</aqua><gray>/</gray><aqua>%cap%</aqua>'
+  skill:
+    done: '<green>%player% skill %skill% is now %value% with %points% skill points left.</green>'
+  cast:
+    done: '<aqua>Skill</aqua> <yellow>%skill%</yellow> <aqua>activated!</aqua>'
+  gender:
+    done: '<green>Your gender has been set to %value%.</green>'
+    done-admin: '<green>Set %player%''s gender to %value%.</green>'
+    already-set: '<red>Your gender is already set and cannot be changed. Contact an admin for help.</red>'
+  element:
+    done: '<green>Set %player%''s %element% %mode% to %value%.</green>'
+  top:
+    header: '<gold>Leaderboard — %mode%</gold>'
+    entry: '<gray>#%rank% <white>%player% <yellow>%value%</yellow></gray>'
+  pet:
+    learn-done: '<green>Pet skill learned: %value%</green>'
+    mode-done: '<green>Pet behavior mode switched to: %value%</green>'
+    give-done: '<green>Given pet token %value% to %player%</green>'
+error:
+  no-permission: '<red>You do not have permission to use this command.</red>'
+  invalid-gender: '<red>Invalid gender: %value%. Please enter male or female.</red>'
+  unknown-subcommand: '<red>Unknown subcommand: %value%</red>'
+  player-required: '<red>This command requires a player sender or a target player argument.</red>'
+  player-not-found: '<red>Online player not found: %value%</red>'
+  invalid-number: '<red>Invalid numeric value: %value%</red>'
+  usage: '<red>Usage: %value%</red>'
+  invalid-class: '<red>Unknown class: %value%</red>'
+  invalid-attribute: '<red>Unknown attribute: %value%</red>'
+  invalid-skill: '<red>Unknown skill: %value%</red>'
+  not-enough-stat-points: '<red>Not enough stat points.</red>'
+  not-enough-skill-points: '<red>Not enough skill points.</red>'
+  skill-cap: '<red>Skill %value% is already at its cap.</red>'
+  skill-cooldown: '<red>Skill %skill% is on cooldown. %seconds%s remaining.</red>'
+  skill-not-learned: '<red>You have not learned the skill %skill%.</red>'
+  no-mana: '<red>Not enough MP to cast this skill!</red>'
+  invalid-element: '<red>Unknown element: %value%</red>'
+  invalid-pet: '<red>Unknown pet id: %value%</red>'
+  pet-no-active: '<red>No active equipped pet found.</red>'
+  pet-learn-failed: '<red>Failed to learn pet skill: %value% (missing/already learned/not enough points)</red>'
+
+gui:
+  profile:
+    attr-value: '<gray>Value: <white>%value%'
+    skill-level: '<gray>Level: <white>%level% / %cap%'
+  attr:
+    current: '<gray>Current: <white>%value%'
+    remaining: '<gray>Remaining stat points: <white>%value%'
+    add-btn: '<green>[+1]'
+    add-btn-lore: '<dark_gray>Click to spend 1 stat point'
+    no-points-btn: '<red>No points left'
+  skill:
+    level: '<gray>Level: <white>%level% / %cap%'
+    remaining: '<gray>Remaining skill points: <white>%value%'
+    capped-label: '<red>Maxed out'
+    add-btn: '<green>[+1]'
+    add-btn-lore: '<dark_gray>Click to spend 1 skill point'
+    maxed-btn: '<red>Maxed'
+    no-points-btn: '<red>No points left'
+  class:
+    locked-0-title: '<red>Starter class not yet unlocked'
+    current-level: '<gray>Current level: <white>%value%'
+    locked-0-hint: '<yellow>Reach level 10 to choose a starter class'
+    locked-1-hint: '<yellow>Reach level 20 to advance your class'
+    advance-reset: '<dark_gray>Class advance resets attribute allocation'
+    maxed-stage: '<gray>Class stage: <white>Final class'
+    maxed-note: '<dark_gray>You have reached the final class'
+    select-hint: '<dark_gray>Click to select this class'
+    advance-hint: '<dark_gray>Click to advance class (resets attributes)'
+    attr-line: '<gray>STR%str% SPI%spi% INT%itl% VIT%vit%'
+  gender:
+    male: '♂ Male'
+    female: '♀ Female'
+
+event:
+  kill:
+    reward: '<dark_gray>Killed %mob%  <green>+%xp% XP  <gold>+%gold% Gold'
+    level-up: '<gold>⬆ Level Up +%levels%! <gray>Now Lv.%level%  <green>Stat +%stat%  <aqua>Skill +%skill%'
+  death:
+    penalty: '<red>☠ You died! <dark_gray>Lost <red>%exp% XP  <gold>%gold% Gold'

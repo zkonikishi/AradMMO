@@ -1,0 +1,25 @@
+id: grappler-m
+
+display: "grappler-m"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: fighter-m
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  14
+  spirit:   10
+  intellect: 4
+  vitality:  14
+
+default-skin: steve

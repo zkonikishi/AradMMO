@@ -1,0 +1,46 @@
+rows: 6
+
+# Titles per state — resolved by ClassPage.resolveTitlePlaceholders()
+states:
+  gender-select:  '<yellow><bold>Select Gender</bold></yellow>'
+  locked-0:       '<gray>Class Selection — Unlocks at Level 10</gray>'
+  class-select-0: '<green><bold>Select Starting Class</bold></green>'
+  locked-1:       '<gray>Class Advancement — Unlocks at Level 20</gray>'
+  class-select-1: '<gold><bold>Select Advancement</bold></gold>'
+  maxed:          '<aqua>Class Info</aqua>'
+
+# Slot positions for class card grid (used in class-select states)
+card-slots: [10, 12, 14, 16, 19, 21, 23, 25, 28, 30]
+
+items:
+  filler:
+    # All 54 slots — state-specific items placed by buildDynamic() will overwrite
+    slots: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53]
+    item: GRAY_STAINED_GLASS_PANE
+    name: ' '
+
+  back:
+    slots: [45]
+    function: back
+    item: ARROW
+    name: '<gray>Back to Profile'
+    lore:
+      - '<dark_gray>Click to go back'
+
+  gender-male:
+    slots: [20]
+    function: gender-male
+    item: LIGHT_BLUE_WOOL
+    name: '<aqua><bold>♂ Male</bold></aqua>'
+    lore:
+      - '<gray>Select a male character'
+      - '<dark_gray>Click to confirm'
+
+  gender-female:
+    slots: [24]
+    function: gender-female
+    item: PINK_WOOL
+    name: '<light_purple><bold>♀ Female</bold></light_purple>'
+    lore:
+      - '<gray>Select a female character'
+      - '<dark_gray>Click to confirm'

@@ -1,0 +1,25 @@
+id: sword-master-f
+
+display: "sword-master-f"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: slayer-f
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  14
+  spirit:   13
+  intellect: 5
+  vitality:  10
+
+default-skin: alex

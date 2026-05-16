@@ -1,0 +1,25 @@
+id: champion
+
+display: "champion"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: dark-lancer
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  16
+  spirit:   9
+  intellect: 5
+  vitality:  13
+
+default-skin: steve

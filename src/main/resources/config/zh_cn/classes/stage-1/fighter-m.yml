@@ -1,0 +1,25 @@
+id: fighter-m
+
+display: "fighter-m"
+
+gender: male
+
+stage: 1
+
+requires-level: 10
+
+parent: adventurer
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  8
+  spirit:   9
+  intellect: 2
+  vitality:  9
+
+default-skin: steve

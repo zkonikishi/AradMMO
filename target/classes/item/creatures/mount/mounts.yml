@@ -1,0 +1,23 @@
+# ============================================================
+# Mount definitions
+# ============================================================
+
+mounts:
+
+  war-horse:
+    name: "&bWar Horse"
+    material: SADDLE
+    entity: HORSE
+    baby: false
+    lore:
+      - "&7A fast and stable combat mount"
+      - "&8Right click to summon"
+
+  tundra-camel:
+    name: "&eTundra Camel"
+    material: LEAD
+    entity: CAMEL
+    baby: false
+    lore:
+      - "&7Long-range expedition mount"
+      - "&8Right click to summon"

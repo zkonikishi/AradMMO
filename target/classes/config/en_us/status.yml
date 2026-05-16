@@ -1,0 +1,249 @@
+# -----------------------------------------------------------------------------
+# Arad MMO — Status Effect Definitions
+#
+# Each entry key is a status ID in lowercase kebab-case.
+# Common fields:
+#   display            Display name shown in game (MiniMessage)
+#   icon               GUI / ActionBar icon (Bukkit Material)
+#   effect-type        crowd-control | dot | debuff | buff
+#   default-duration   Default duration in ticks (20 ticks = 1 second)
+#   break-on-damage    Whether the effect breaks when the target takes damage
+#   stackable          Whether the effect can stack
+#   max-stacks         Maximum stack count for stackable effects
+#
+# Crowd-control fields:
+#   movement           Lock movement using extreme slowness
+#   actions            Lock actions using extreme mining fatigue
+#
+# DoT fields:
+#   damage-type        fire | physical | magic | true
+#   base-damage        Damage dealt each tick
+#   tick-interval      Tick interval between damage pulses
+#
+# Debuff / buff fields:
+#   potion-effect      Bukkit PotionEffectType name
+#   potion-amplifier   Potion level (0 = I, 1 = II, ...)
+#
+# Optional particle fields:
+#   particle           Bukkit Particle name
+#   particle-count     Spawn count per pulse
+# -----------------------------------------------------------------------------
+
+# ========== Crowd Control ==========
+
+stun:
+  display: '<gray>✦ Stun</gray>'
+  icon: BARRIER
+  effect-type: crowd-control
+  default-duration: 60        # 3 seconds
+  break-on-damage: false
+  stackable: false
+  movement: true
+  actions: true
+  particle: SMOKE_NORMAL
+  particle-count: 4
+
+freeze:
+  display: '<aqua>❄ Freeze</aqua>'
+  icon: BLUE_ICE
+  effect-type: crowd-control
+  default-duration: 80        # 4 seconds
+  break-on-damage: false
+  stackable: false
+  movement: true
+  actions: false              # Casting allowed, movement blocked
+  particle: SNOWFLAKE
+  particle-count: 6
+
+petrify:
+  display: '<gray>⬛ Petrify</gray>'
+  icon: STONE
+  effect-type: crowd-control
+  default-duration: 100       # 5 seconds
+  break-on-damage: false
+  stackable: false
+  movement: true
+  actions: true
+  particle: BLOCK_DUST
+  particle-count: 5
+
+sleep:
+  display: '<dark_blue>💤 Sleep</dark_blue>'
+  icon: BED
+  effect-type: crowd-control
+  default-duration: 120       # 6 seconds
+  break-on-damage: true       # Wakes on damage
+  stackable: false
+  movement: true
+  actions: true
+  particle: CLOUD
+  particle-count: 2
+
+fear:
+  display: '<yellow>⚡ Fear</yellow>'
+  icon: SOUL_SAND
+  effect-type: crowd-control
+  default-duration: 60        # 3 seconds
+  break-on-damage: false
+  stackable: false
+  movement: false             # Panic movement instead of a hard lock
+  actions: true
+  particle: SMOKE_LARGE
+  particle-count: 3
+
+# ========== Damage over Time ==========
+
+burn:
+  display: '<red>🔥 Burn</red>'
+  icon: FIRE_CHARGE
+  effect-type: dot
+  default-duration: 100       # 5 seconds
+  break-on-damage: false
+  stackable: true
+  max-stacks: 3
+  damage-type: fire
+  base-damage: 2.0
+  tick-interval: 20           # Once per second
+  particle: FLAME
+  particle-count: 5
+
+bleed:
+  display: '<dark_red>🗡 Bleed</dark_red>'
+  icon: REDSTONE
+  effect-type: dot
+  default-duration: 100
+  break-on-damage: false
+  stackable: true
+  max-stacks: 5
+  damage-type: physical
+  base-damage: 1.5
+  tick-interval: 20
+  particle: BLOCK_CRACK
+  particle-count: 4
+
+poison:
+  display: '<dark_green>☠ Poison</dark_green>'
+  icon: SPIDER_EYE
+  effect-type: dot
+  default-duration: 120       # 6 seconds
+  break-on-damage: false
+  stackable: true
+  max-stacks: 3
+  damage-type: magic
+  base-damage: 1.8
+  tick-interval: 20
+  particle: SPELL_MOB
+  particle-count: 4
+
+shock:
+  display: '<yellow>⚡ Shock</yellow>'
+  icon: LIGHTNING_ROD
+  effect-type: dot
+  default-duration: 60        # 3 seconds
+  break-on-damage: false
+  stackable: false
+  damage-type: magic
+  base-damage: 2.5
+  tick-interval: 15           # Faster pulses
+  particle: ELECTRIC_SPARK
+  particle-count: 6
+
+# ========== Debuffs ==========
+
+slow:
+  display: '<blue>⬇ Slow</blue>'
+  icon: ICE
+  effect-type: debuff
+  default-duration: 100
+  break-on-damage: false
+  stackable: false
+  potion-effect: SLOWNESS
+  potion-amplifier: 1
+  particle: CLOUD
+  particle-count: 2
+
+weaken:
+  display: '<gray>↓ Weaken</gray>'
+  icon: ROTTEN_FLESH
+  effect-type: debuff
+  default-duration: 100
+  break-on-damage: false
+  stackable: false
+  potion-effect: WEAKNESS
+  potion-amplifier: 1
+  particle: SMOKE_NORMAL
+  particle-count: 2
+
+blind:
+  display: '<dark_gray>◼ Blind</dark_gray>'
+  icon: INK_SAC
+  effect-type: debuff
+  default-duration: 80
+  break-on-damage: false
+  stackable: false
+  potion-effect: BLINDNESS
+  potion-amplifier: 0
+  particle: SMOKE_NORMAL
+  particle-count: 2
+
+curse:
+  display: '<dark_purple>✖ Curse</dark_purple>'
+  icon: WITHER_ROSE
+  effect-type: debuff
+  default-duration: 200       # 10 seconds
+  break-on-damage: false
+  stackable: false
+  potion-effect: UNLUCK
+  potion-amplifier: 2
+  particle: WITCH
+  particle-count: 3
+
+# ========== Buffs ==========
+
+haste:
+  display: '<yellow>⚡ Haste</yellow>'
+  icon: FEATHER
+  effect-type: buff
+  default-duration: 100
+  break-on-damage: false
+  stackable: false
+  potion-effect: SPEED
+  potion-amplifier: 1
+  particle: CRIT
+  particle-count: 3
+
+strength-up:
+  display: '<red>⬆ Strength Up</red>'
+  icon: IRON_SWORD
+  effect-type: buff
+  default-duration: 200
+  break-on-damage: false
+  stackable: false
+  potion-effect: STRENGTH
+  potion-amplifier: 1
+  particle: CRIT_MAGIC
+  particle-count: 3
+
+shield:
+  display: '<white>🛡 Shield</white>'
+  icon: SHIELD
+  effect-type: buff
+  default-duration: 100
+  break-on-damage: false
+  stackable: false
+  potion-effect: ABSORPTION
+  potion-amplifier: 1
+  particle: SPELL_INSTANT
+  particle-count: 4
+
+regen:
+  display: '<green>♥ Regeneration</green>'
+  icon: GOLDEN_APPLE
+  effect-type: buff
+  default-duration: 100
+  break-on-damage: false
+  stackable: false
+  potion-effect: REGENERATION
+  potion-amplifier: 0
+  particle: HEART
+  particle-count: 2

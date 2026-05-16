@@ -1,0 +1,25 @@
+id: vanguard
+
+display: "vanguard"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: dark-lancer
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  14
+  spirit:   10
+  intellect: 6
+  vitality:  12
+
+default-skin: steve

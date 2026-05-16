@@ -1,0 +1,24 @@
+id: dark-warrior
+
+display: "dark-warrior"
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: adventurer
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: true
+
+base-attributes:
+  strength:  13
+  spirit:   10
+  intellect: 7
+  vitality:  12
+
+default-skin: steve

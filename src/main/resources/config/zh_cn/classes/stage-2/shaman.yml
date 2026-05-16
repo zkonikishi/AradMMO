@@ -1,0 +1,24 @@
+id: shaman
+
+display: "shaman"
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: priest-f
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  4
+  spirit:   8
+  intellect: 18
+  vitality:  12
+
+default-skin: alex

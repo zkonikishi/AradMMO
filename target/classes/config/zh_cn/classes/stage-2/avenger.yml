@@ -1,0 +1,25 @@
+id: avenger
+
+display: "avenger"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: priest-m
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  14
+  spirit:   8
+  intellect: 8
+  vitality:  12
+
+default-skin: steve

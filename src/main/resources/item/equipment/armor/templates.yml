@@ -1,0 +1,183 @@
+# Arad MMO - Armor templates
+
+iron-helmet-t1:
+  material: IRON_HELMET
+  name: "铁制头盔"
+  required-level: 1
+  arad-group: EQUIPMENT
+  arad-category: ARMOR
+  arad-part: HELMET
+  arad-source: ARMOR
+  arad-armor-type: HEAVY
+  arad-set-id: iron-guard
+  rarity: COMMON
+  stats:
+    phys-def: 40.0
+    max-hp: 150.0
+  lore:
+    - "&8坚固的铁制头盔。"
+
+iron-chestplate-t1:
+  material: IRON_CHESTPLATE
+  name: "铁制胸甲"
+  required-level: 1
+  arad-group: EQUIPMENT
+  arad-category: ARMOR
+  arad-part: CHESTPLATE
+  arad-source: ARMOR
+  arad-armor-type: HEAVY
+  arad-set-id: iron-guard
+  rarity: COMMON
+  stats:
+    phys-def: 80.0
+    max-hp: 300.0
+  lore:
+    - "&8坚固的铁制胸甲。"
+
+iron-leggings-t1:
+  material: IRON_LEGGINGS
+  name: "铁制护腿"
+  required-level: 1
+  arad-group: EQUIPMENT
+  arad-category: ARMOR
+  arad-part: LEGGINGS
+  arad-source: ARMOR
+  arad-armor-type: HEAVY
+  arad-set-id: iron-guard
+  rarity: COMMON
+  stats:
+    phys-def: 60.0
+    max-hp: 200.0
+  lore:
+    - "&8坚固的铁制护腿。"
+
+iron-boots-t1:
+  material: IRON_BOOTS
+  name: "铁制战靴"
+  required-level: 1
+  arad-group: EQUIPMENT
+  arad-category: ARMOR
+  arad-part: BOOTS
+  arad-source: ARMOR
+  arad-armor-type: HEAVY
+  arad-set-id: iron-guard
+  rarity: COMMON
+  stats:
+    phys-def: 35.0
+    max-hp: 100.0
+    move-speed: 2.0
+  lore:
+    - "&8坚固的铁制战靴。"
+
+iron-belt-t1:
+  material: RABBIT_HIDE
+  name: "铁制腰带"
+  required-level: 1
+  arad-group: EQUIPMENT
+  arad-category: ARMOR
+  arad-part: BELT
+  arad-source: ARMOR
+  arad-armor-type: HEAVY
+  arad-set-id: iron-guard
+  rarity: COMMON
+  stats:
+    phys-def: 28.0
+    max-hp: 90.0
+    toughness: 2.0
+  lore:
+    - "&8厚实的铁制腰带。"
+
+diamond-helmet-t3:
+  material: DIAMOND_HELMET
+  name: "钻石头盔"
+  required-level: 30
+  arad-group: EQUIPMENT
+  arad-category: ARMOR
+  arad-part: HELMET
+  arad-source: ARMOR
+  arad-armor-type: LIGHT
+  arad-set-id: diamond-wind
+  rarity: UNCOMMON
+  stats:
+    phys-def: 180.0
+    magic-def: 70.0
+    max-hp: 450.0
+    cast-speed: 2.0
+  lore:
+    - "&8轻盈且坚固的钻石头盔。"
+
+diamond-chestplate-t3:
+  material: DIAMOND_CHESTPLATE
+  name: "钻石胸甲"
+  required-level: 30
+  arad-group: EQUIPMENT
+  arad-category: ARMOR
+  arad-part: CHESTPLATE
+  arad-source: ARMOR
+  arad-armor-type: LIGHT
+  arad-set-id: diamond-wind
+  rarity: UNCOMMON
+  stats:
+    phys-def: 300.0
+    magic-def: 100.0
+    toughness: 10.0
+    max-hp: 800.0
+  lore:
+    - "&8以上等钻石锻造的精良胸甲。"
+
+diamond-leggings-t3:
+  material: DIAMOND_LEGGINGS
+  name: "钻石护腿"
+  required-level: 30
+  arad-group: EQUIPMENT
+  arad-category: ARMOR
+  arad-part: LEGGINGS
+  arad-source: ARMOR
+  arad-armor-type: LIGHT
+  arad-set-id: diamond-wind
+  rarity: UNCOMMON
+  stats:
+    phys-def: 220.0
+    magic-def: 80.0
+    max-hp: 560.0
+    atk-speed: 2.0
+  lore:
+    - "&8兼顾灵活与防护的钻石护腿。"
+
+diamond-boots-t3:
+  material: DIAMOND_BOOTS
+  name: "钻石战靴"
+  required-level: 30
+  arad-group: EQUIPMENT
+  arad-category: ARMOR
+  arad-part: BOOTS
+  arad-source: ARMOR
+  arad-armor-type: LIGHT
+  arad-set-id: diamond-wind
+  rarity: UNCOMMON
+  stats:
+    phys-def: 150.0
+    magic-def: 55.0
+    max-hp: 380.0
+    move-speed: 4.0
+  lore:
+    - "&8附带疾风祝福的钻石战靴。"
+
+diamond-belt-t3:
+  material: RABBIT_HIDE
+  name: "钻石腰带"
+  required-level: 30
+  arad-group: EQUIPMENT
+  arad-category: ARMOR
+  arad-part: BELT
+  arad-source: ARMOR
+  arad-armor-type: LIGHT
+  arad-set-id: diamond-wind
+  rarity: UNCOMMON
+  stats:
+    phys-def: 120.0
+    magic-def: 50.0
+    max-hp: 320.0
+    crit-chance: 2.0
+  lore:
+    - "&8镶嵌钻石纹章的腰带。"

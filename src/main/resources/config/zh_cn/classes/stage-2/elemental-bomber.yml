@@ -1,0 +1,25 @@
+id: elemental-bomber
+
+display: "elemental-bomber"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: mage-m
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  3
+  spirit:   7
+  intellect: 20
+  vitality:  8
+
+default-skin: steve

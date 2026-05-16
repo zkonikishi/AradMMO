@@ -1,0 +1,25 @@
+id: shadow
+
+display: "shadow"
+
+gender: female
+
+stage: 1
+
+requires-level: 10
+
+parent: adventurer
+
+combat-style: assassin
+
+armor-mastery: LEATHER
+
+external: false
+
+base-attributes:
+  strength:  5
+  spirit:   12
+  intellect: 4
+  vitality:  7
+
+default-skin: alex

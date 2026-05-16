@@ -1,0 +1,25 @@
+id: grappler-f
+
+display: "grappler-f"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: fighter-f
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  15
+  spirit:   10
+  intellect: 3
+  vitality:  14
+
+default-skin: alex

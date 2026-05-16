@@ -1,0 +1,38 @@
+# ----------------------------------------
+# Class definition: Crusader (crusader-m)
+# ----------------------------------------
+
+# Unique class ID (usually no need to change)
+id: crusader-m
+
+# Display name shown in game
+display: "Crusader"
+
+# Gender restriction: any | male | female
+gender: male
+
+# Class stage: 0=adventurer 1=base class 2=advancement
+stage: 2
+
+# Required level to unlock
+requires-level: 20
+
+# Parent class ID (empty for adventurer)
+parent: priest-m
+
+# Combat style (balanced/melee/ranged/magic/tank/assassin)
+combat-style: tank
+
+# Whether this is an external class (auto-unlocked and hidden from advancement menus)
+external: false
+
+# Base attributes (starting values before point allocation)
+base-attributes:
+  strength:  9
+  spirit:   6
+  intellect: 10
+  vitality:  17
+
+# Default preview skin
+# Allowed values: steve | alex | skin-station player name | url:https://... | base64:eyJ...
+default-skin: steve

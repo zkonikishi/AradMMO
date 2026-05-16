@@ -1,0 +1,85 @@
+name: Arad MMO
+version: '0.1.0-SNAPSHOT'
+main: cn.aradmmo.core.AradMmoPlugin
+api-version: '26.1'
+author: zkonikishi
+description: Original MMO foundation plugin for Paper and Folia servers.
+folia-supported: true
+
+dependencies:
+  server:
+    MythicLib:
+      load: BEFORE
+      required: false
+    MMOItems:
+      load: BEFORE
+      required: false
+
+permissions:
+  aradmmo.command.reload:
+    default: op
+  aradmmo.command.addxp:
+    default: op
+  aradmmo.command.money:
+    default: op
+  aradmmo.command.vip:
+    default: op
+  aradmmo.command.class:
+    default: op
+  aradmmo.command.chat:
+    default: op
+  aradmmo.command.chat.route:
+    default: op
+  aradmmo.command.stat:
+    default: op
+  aradmmo.command.resetstats:
+    default: op
+  aradmmo.command.skill:
+    default: op
+  aradmmo.command.cast:
+    default: true
+  aradmmo.admin.gender:
+    description: Allows setting any player's gender or overriding a locked gender
+    default: op
+  aradmmo.admin.element:
+    description: Allows setting any player's element attack/resist values
+    default: op
+  aradmmo.command.item:
+    description: Allows creating and giving stat items
+    default: op
+  aradmmo.command.equip.debug:
+    description: Allows viewing armor set and mastery debug details
+    default: op
+  aradmmo.bypass.level:
+    description: Bypass Arad item level requirements
+    default: op
+  aradmmo.bypass.class:
+    description: Bypass Arad item class requirements
+    default: op
+  aradmmo.vip.gradient.name:
+    description: Allow VIP gradient name customization
+    default: op
+  aradmmo.vip.gradient.chat:
+    description: Allow VIP gradient chat customization
+    default: op
+  aradmmo.chat.default:
+    description: Default Arad chat rule permission
+    default: true
+  aradmmo.chat.admin:
+    description: Admin Arad chat rule permission
+    default: op
+  aradmmo.chat.color:
+    description: Allow using legacy color codes in chat
+    default: op
+  aradmmo.chat.rgb:
+    description: Allow using RGB and MiniMessage style colors in chat
+    default: op
+  aradmmo.chat.toggle:
+    description: Allow toggling personal chat receive state
+    default: true
+
+commands:
+  am:
+    description: Arad MMO command root
+    usage: /am <help|reload|lang|profile|addxp|money|vip|class|stats|stat|resetstats|skills|skill|cast|menu|equip|reinforce|item|pet|mount|top|gender|element|vipcolor|chat>
+    aliases: [aradmmo]

@@ -1,0 +1,501 @@
+# ============================================================
+# Pet definitions
+#
+# id          : unique pet id stored in item NBT
+# name        : display name (supports & color codes)
+# material    : item material for pet token
+# entity      : Bukkit EntityType to spawn
+# health      : pet base health
+# damage      : pet attack damage (-1 = no attack)
+# speed       : pet movement speed
+# attack-mobs : whether pet is aggressive
+# revival     : whether pet revives after death
+# baby        : spawn as baby form (if Ageable)
+# attributes  : bonus attributes added to player
+#               keys: strength, intellect, spirit, vitality, stamina
+# lore        : item lore
+# ============================================================
+
+pets:
+
+  wolf:
+    name: "&fBeta Loyal Wolf"
+    material: BONE
+    entity: WOLF
+    health: 20.0
+    damage: 4.0
+    speed: 0.35
+    attack-mobs: true
+    revival: true
+    baby: false
+    attributes:
+      strength: 8
+      vitality: 5
+      intellect: 2
+      spirit: 2
+    lore:
+      - "&8[Battle]"
+      - "&7A loyal combat partner"
+      - "&8Put into pet slot to summon"
+
+  cat:
+    name: "&eStar Lucky Cat"
+    material: COD
+    entity: CAT
+    health: 10.0
+    damage: -1.0
+    speed: 0.3
+    attack-mobs: false
+    revival: true
+    baby: false
+    attributes:
+      strength: 1
+      vitality: 2
+      intellect: 4
+      spirit: 5
+    lore:
+      - "&8[Support]"
+      - "&7Brings fortune and calm"
+      - "&8Put into pet slot to summon"
+
+  wolf-pup:
+    name: "&fAlpha Wolf Pup"
+    material: BONE
+    entity: WOLF
+    health: 12.0
+    damage: 2.5
+    speed: 0.38
+    attack-mobs: true
+    revival: true
+    baby: true
+    attributes:
+      strength: 6
+      vitality: 4
+      intellect: 2
+      spirit: 2
+    lore:
+      - "&8[Battle]"
+      - "&7Agile little wolf"
+      - "&8Put into pet slot to summon"
+
+  fox-kit:
+    name: "&6Beta Fox Kit"
+    material: SWEET_BERRIES
+    entity: FOX
+    health: 10.0
+    damage: 2.0
+    speed: 0.45
+    attack-mobs: true
+    revival: true
+    baby: true
+    attributes:
+      strength: 6
+      vitality: 4
+      intellect: 2
+      spirit: 2
+    lore:
+      - "&8[Battle]"
+      - "&7Fast and tricky"
+      - "&8Put into pet slot to summon"
+
+  cat-kitten:
+    name: "&eAlpha Kitten"
+    material: COD
+    entity: CAT
+    health: 8.0
+    damage: -1.0
+    speed: 0.32
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 1
+      vitality: 2
+      intellect: 4
+      spirit: 4
+    lore:
+      - "&8[Support]"
+      - "&7Soft and adorable"
+      - "&8Put into pet slot to summon"
+
+  ocelot-kitten:
+    name: "&eAlpha Ocelot Kitten"
+    material: COD
+    entity: OCELOT
+    health: 8.0
+    damage: -1.0
+    speed: 0.35
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 1
+      vitality: 2
+      intellect: 4
+      spirit: 4
+    lore:
+      - "&8[Support]"
+      - "&7Jungle born stalker"
+      - "&8Put into pet slot to summon"
+
+  panda-cub:
+    name: "&aGamma Panda Cub"
+    material: BAMBOO
+    entity: PANDA
+    health: 18.0
+    damage: -1.0
+    speed: 0.28
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 1
+      vitality: 3
+      intellect: 4
+      spirit: 4
+    lore:
+      - "&8[Support]"
+      - "&7Round and peaceful"
+      - "&8Put into pet slot to summon"
+
+  polar-bear-cub:
+    name: "&bDelta Polar Bear Cub"
+    material: PACKED_ICE
+    entity: POLAR_BEAR
+    health: 25.0
+    damage: 5.0
+    speed: 0.3
+    attack-mobs: true
+    revival: true
+    baby: true
+    attributes:
+      strength: 9
+      vitality: 6
+      intellect: 1
+      spirit: 1
+    lore:
+      - "&8[Battle]"
+      - "&7Small body, huge power"
+      - "&8Put into pet slot to summon"
+
+  axolotl-hatchling:
+    name: "&bAlpha Axolotl Hatchling"
+    material: TROPICAL_FISH
+    entity: AXOLOTL
+    health: 10.0
+    damage: -1.0
+    speed: 0.25
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 1
+      vitality: 2
+      intellect: 5
+      spirit: 4
+    lore:
+      - "&8[Support]"
+      - "&7Regenerative wonder"
+      - "&8Put into pet slot to summon"
+
+  goat-kid:
+    name: "&7Alpha Goat Kid"
+    material: WHEAT
+    entity: GOAT
+    health: 12.0
+    damage: 1.5
+    speed: 0.38
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 2
+      vitality: 3
+      intellect: 3
+      spirit: 3
+    lore:
+      - "&8[Support]"
+      - "&7Playful mountain spirit"
+      - "&8Put into pet slot to summon"
+
+  camel-calf:
+    name: "&eBeta Camel Calf"
+    material: CACTUS
+    entity: CAMEL
+    health: 22.0
+    damage: -1.0
+    speed: 0.32
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 1
+      vitality: 4
+      intellect: 3
+      spirit: 4
+    lore:
+      - "&8[Support]"
+      - "&7Endurance of the desert"
+      - "&8Put into pet slot to summon"
+
+  sniffer-snifflet:
+    name: "&dOmega Snifflet"
+    material: SNIFFER_EGG
+    entity: SNIFFER
+    health: 20.0
+    damage: -1.0
+    speed: 0.28
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 2
+      vitality: 4
+      intellect: 6
+      spirit: 6
+    lore:
+      - "&8[Special] &dUltra Rare"
+      - "&7Ancient bloodline"
+      - "&8Put into pet slot to summon"
+
+  armadillo-pup:
+    name: "&6Gamma Armadillo Pup"
+    material: ARMADILLO_SCUTE
+    entity: ARMADILLO
+    health: 10.0
+    damage: -1.0
+    speed: 0.3
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 1
+      vitality: 4
+      intellect: 3
+      spirit: 3
+    lore:
+      - "&8[Support]"
+      - "&7Rolls into a shield"
+      - "&8Put into pet slot to summon"
+
+  rabbit-kit:
+    name: "&fAlpha Rabbit Kit"
+    material: RABBIT_FOOT
+    entity: RABBIT
+    health: 6.0
+    damage: -1.0
+    speed: 0.4
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 1
+      vitality: 1
+      intellect: 3
+      spirit: 5
+    lore:
+      - "&8[Support]"
+      - "&7Lucky quick steps"
+      - "&8Put into pet slot to summon"
+
+  turtle-hatchling:
+    name: "&aBeta Turtle Hatchling"
+    material: TURTLE_SCUTE
+    entity: TURTLE
+    health: 10.0
+    damage: -1.0
+    speed: 0.25
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 1
+      vitality: 5
+      intellect: 2
+      spirit: 3
+    lore:
+      - "&8[Support]"
+      - "&7Slow but sturdy"
+      - "&8Put into pet slot to summon"
+
+  frog-tadpole:
+    name: "&aAlpha Tadpole"
+    material: FROGSPAWN
+    entity: TADPOLE
+    health: 4.0
+    damage: -1.0
+    speed: 0.3
+    attack-mobs: false
+    revival: false
+    baby: false
+    attributes:
+      strength: 0
+      vitality: 1
+      intellect: 4
+      spirit: 4
+    lore:
+      - "&8[Support]"
+      - "&7A tiny future frog"
+      - "&8Put into pet slot to summon"
+
+  pig-piglet:
+    name: "&fAlpha Piglet"
+    material: CARROT
+    entity: PIG
+    health: 10.0
+    damage: -1.0
+    speed: 0.3
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 1
+      vitality: 3
+      intellect: 3
+      spirit: 3
+    lore:
+      - "&8[Support]"
+      - "&7Round and cheerful"
+      - "&8Put into pet slot to summon"
+
+  sheep-lamb:
+    name: "&fAlpha Lamb"
+    material: WHITE_WOOL
+    entity: SHEEP
+    health: 10.0
+    damage: -1.0
+    speed: 0.3
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 1
+      vitality: 2
+      intellect: 3
+      spirit: 4
+    lore:
+      - "&8[Support]"
+      - "&7Soft and calm"
+      - "&8Put into pet slot to summon"
+
+  cow-calf:
+    name: "&7Alpha Calf"
+    material: WHEAT
+    entity: COW
+    health: 14.0
+    damage: -1.0
+    speed: 0.3
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 2
+      vitality: 4
+      intellect: 2
+      spirit: 3
+    lore:
+      - "&8[Support]"
+      - "&7Gentle young bull"
+      - "&8Put into pet slot to summon"
+
+  chicken-chick:
+    name: "&eAlpha Chick"
+    material: EGG
+    entity: CHICKEN
+    health: 4.0
+    damage: -1.0
+    speed: 0.3
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 0
+      vitality: 1
+      intellect: 3
+      spirit: 4
+    lore:
+      - "&8[Support]"
+      - "&7Tiny but energetic"
+      - "&8Put into pet slot to summon"
+
+  horse-foal:
+    name: "&eBeta Foal"
+    material: APPLE
+    entity: HORSE
+    health: 18.0
+    damage: -1.0
+    speed: 0.4
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 2
+      vitality: 4
+      intellect: 2
+      spirit: 3
+      stamina: 3
+    lore:
+      - "&8[Support]"
+      - "&7Born to run"
+      - "&8Put into pet slot to summon"
+
+  llama-calf:
+    name: "&7Beta Llama Calf"
+    material: HAY_BLOCK
+    entity: LLAMA
+    health: 15.0
+    damage: -1.0
+    speed: 0.3
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 1
+      vitality: 4
+      intellect: 3
+      spirit: 3
+    lore:
+      - "&8[Support]"
+      - "&7Fluffy mountain carrier"
+      - "&8Put into pet slot to summon"
+
+  hoglin-hoglet:
+    name: "&cGamma Hoglin Hoglet"
+    material: CRIMSON_FUNGUS
+    entity: HOGLIN
+    health: 30.0
+    damage: 6.0
+    speed: 0.32
+    attack-mobs: true
+    revival: true
+    baby: true
+    attributes:
+      strength: 10
+      vitality: 6
+      intellect: 1
+      spirit: 1
+    lore:
+      - "&8[Battle] &cNether"
+      - "&7Ferocious nether blood"
+      - "&8Put into pet slot to summon"
+
+  strider-hatchling:
+    name: "&cBeta Strider Hatchling"
+    material: WARPED_FUNGUS
+    entity: STRIDER
+    health: 16.0
+    damage: -1.0
+    speed: 0.28
+    attack-mobs: false
+    revival: true
+    baby: true
+    attributes:
+      strength: 1
+      vitality: 3
+      intellect: 4
+      spirit: 4
+      stamina: 2
+    lore:
+      - "&8[Support] &cNether"
+      - "&7Walks where lava flows"
+      - "&8Put into pet slot to summon"

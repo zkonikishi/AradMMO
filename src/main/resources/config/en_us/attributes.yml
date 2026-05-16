@@ -1,0 +1,153 @@
+# -----------------------------------------------------------------------------
+# Arad MMO — Attribute Definitions
+#
+# HP: current life / maximum life. Reaching 0 causes death.
+# MP: current mana / maximum mana. Most skills consume MP.
+#
+# Strength (STR): increases physical damage. Every 250 STR grants +100% physical damage.
+# Intellect (INT): increases magical damage. Every 250 INT grants +100% magical damage.
+# Spirit (SPI): increases max MP, MP regeneration, and magical defense.
+# Vitality (VIT): increases max HP, HP regeneration, and physical defense.
+# Stamina (STA): increases max ST and stamina regeneration.
+# -----------------------------------------------------------------------------
+
+strength:
+  display: '<white>Strength <gray>(STR)</gray></white>'
+  icon: IRON_SWORD
+  lore:
+    - '<gray>Core stat for physical classes'
+    - '<gray>Improves physical and independent attack power'
+    - '<gray>Affects Physical Atk. for percent-based physical skills'
+    - '<gray>Affects Independent Atk. for fixed-damage skills'
+    - '<gray>Affects Physical Crit for physical attacks only'
+    - '<gray>Every 250 STR grants +100% physical damage'
+    - ''
+    - '<dark_gray>Per point:'
+    - '<gray>  Physical multiplier <white>+{physical-multiplier}</white>'
+    - '<gray>  Independent multiplier <white>+{independent-multiplier}</white>'
+  per-point:
+    physical-multiplier: 0.018
+    independent-multiplier: 0.020
+
+spirit:
+  display: '<aqua>Spirit <gray>(SPI)</gray></aqua>'
+  icon: BLAZE_POWDER
+  lore:
+    - '<gray>Improves max MP, MP regeneration, and magic defense'
+    - '<gray>Affects Magical Crit for magical attacks only'
+    - '<gray>Also contributes to Independent Atk. for fixed-damage skills'
+    - '<gray>Every 250 SPI doubles max MP and MP regeneration'
+    - '<gray>Each point also grants +5 magic defense'
+    - ''
+    - '<dark_gray>Per point:'
+    - '<gray>  Crit chance <white>+{crit-chance}</white>'
+    - '<gray>  Magic reduction <white>+{magic-reduction}</white>'
+  per-point:
+    crit-chance: 0.003
+    magic-reduction: 0.005
+
+intellect:
+  display: '<light_purple>Intellect <gray>(INT)</gray></light_purple>'
+  icon: ENDER_PEARL
+  lore:
+    - '<gray>Core stat for magical classes'
+    - '<gray>Improves magical attack power'
+    - '<gray>Affects Magical Atk. for percent-based magical skills'
+    - '<gray>Affects Independent Atk. for fixed-damage skills'
+    - '<gray>Affects Magical Crit for magical attacks only'
+    - '<gray>Every 250 INT grants +100% magical damage'
+    - ''
+    - '<dark_gray>Per point:'
+    - '<gray>  Magic multiplier <white>+{magic-multiplier}</white>'
+  per-point:
+    magic-multiplier: 0.018
+
+vitality:
+  display: '<green>Vitality <gray>(VIT)</gray></green>'
+  icon: GOLDEN_APPLE
+  lore:
+    - '<gray>Improves max HP, HP regeneration, and physical defense'
+    - '<gray>Affects Physical Crit for physical attacks only'
+    - '<gray>Also contributes to Independent Atk. for fixed-damage skills'
+    - '<gray>Every 250 VIT doubles max HP and HP regeneration'
+    - '<gray>Each point also grants +5 physical defense'
+    - ''
+    - '<dark_gray>Per point:'
+    - '<gray>  Physical reduction <white>+{damage-reduction}</white>'
+  per-point:
+    damage-reduction: 0.008
+
+stamina:
+  display: '<gold>Stamina <gray>(STA)</gray></gold>'
+  icon: FEATHER
+  lore:
+    - '<gray>Improves maximum ST and stamina regeneration'
+    - '<gray>Affects sprinting, swimming, and gliding uptime'
+    - ''
+    - '<dark_gray>Per point:'
+    - '<gray>  Max stamina (ST) <white>+{max-stamina}</white>'
+    - '<gray>  Stamina regen <white>+{regen-per-stamina}/s</white>'
+    - ''
+    - '<dark_gray>Note: inventory weight is independent from STA'
+  per-point:
+    max-stamina: 8
+    regen-per-stamina: 1
+
+# -----------------------------------------------------------------------------
+# Element System
+#
+# Arad has four major elements: Fire, Ice, Light, and Dark.
+# Each player has two values for each element:
+#   attack  - elemental attack bonus on the offense side
+#   resist  - elemental resistance on the defense side
+#
+# Effective element bonus = attacker attack - defender resist
+# minimum-bonus and maximum-bonus clamp the final result.
+# -----------------------------------------------------------------------------
+elements:
+  minimum-bonus: -50
+  maximum-bonus: 150
+
+  fire:
+    display: '<red>Fire <gray>(F)</gray></red>'
+    icon: FIRE_CHARGE
+    color: '<red>'
+    lore:
+      - '<gray>Flame power that scorches through the dungeon'
+      - '<gray>Higher fire attack deals more damage to targets with low fire resist'
+      - '<gray>Higher fire resist reduces incoming fire damage'
+      - ''
+      - '<dark_gray>Fire attack <red>{attack}%</red>  |  Fire resist <gold>{resist}%</gold>'
+
+  ice:
+    display: '<aqua>Ice <gray>(I)</gray></aqua>'
+    icon: BLUE_ICE
+    color: '<aqua>'
+    lore:
+      - '<gray>Absolute cold that freezes everything in place'
+      - '<gray>Higher ice attack deals more damage to targets with low ice resist'
+      - '<gray>Higher ice resist reduces incoming ice damage'
+      - ''
+      - '<dark_gray>Ice attack <aqua>{attack}%</aqua>  |  Ice resist <blue>{resist}%</blue>'
+
+  light:
+    display: '<yellow>Light <gray>(L)</gray></yellow>'
+    icon: GLOWSTONE_DUST
+    color: '<yellow>'
+    lore:
+      - '<gray>Holy light that purges darkness'
+      - '<gray>Higher light attack deals more damage to targets with low light resist'
+      - '<gray>Higher light resist reduces incoming light damage'
+      - ''
+      - '<dark_gray>Light attack <yellow>{attack}%</yellow>  |  Light resist <gold>{resist}%</gold>'
+
+  dark:
+    display: '<dark_purple>Dark <gray>(D)</gray></dark_purple>'
+    icon: COAL_BLOCK
+    color: '<dark_purple>'
+    lore:
+      - '<gray>Abyssal power that devours the light'
+      - '<gray>Higher dark attack deals more damage to targets with low dark resist'
+      - '<gray>Higher dark resist reduces incoming dark damage'
+      - ''
+      - '<dark_gray>Dark attack <dark_purple>{attack}%</dark_purple>  |  Dark resist <purple>{resist}%</purple>'

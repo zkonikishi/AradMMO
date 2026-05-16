@@ -1,0 +1,25 @@
+id: berserker
+
+display: "berserker"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: slayer
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  18
+  spirit:   8
+  intellect: 3
+  vitality:  13
+
+default-skin: steve

@@ -1,0 +1,25 @@
+id: launcher-f
+
+display: "launcher-f"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: gunner-f
+
+combat-style: ranged
+
+armor-mastery: LEATHER
+
+external: false
+
+base-attributes:
+  strength:  8
+  spirit:   15
+  intellect: 6
+  vitality:  9
+
+default-skin: alex

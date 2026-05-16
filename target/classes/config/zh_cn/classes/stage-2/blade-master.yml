@@ -1,0 +1,24 @@
+id: blade-master
+
+display: "blade-master"
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: slayer
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  15
+  spirit:   12
+  intellect: 5
+  vitality:  10
+
+default-skin: steve

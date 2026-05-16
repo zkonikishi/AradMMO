@@ -1,0 +1,25 @@
+id: gunner-m
+
+display: "gunner-m"
+
+gender: male
+
+stage: 1
+
+requires-level: 10
+
+parent: adventurer
+
+combat-style: ranged
+
+armor-mastery: LEATHER
+
+external: false
+
+base-attributes:
+  strength:  4
+  spirit:   11
+  intellect: 5
+  vitality:  8
+
+default-skin: steve

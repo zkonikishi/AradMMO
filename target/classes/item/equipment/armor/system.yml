@@ -1,0 +1,170 @@
+# Arad MMO armor system (DFO style)
+# arad-armor-type: CLOTH | LEATHER | LIGHT | HEAVY | PLATE
+# set-bonuses: per set-id thresholds (recommended). Legacy global threshold keys are still supported.
+# class-armor-mastery:
+#   strict-type-bonus: true  -> only mastery type can trigger armor-type-bonuses
+#   mismatch-penalties: recommended negative values
+#   type-bonuses: mastery-specific thresholds by armor type
+
+armor-type-bonuses:
+  CLOTH:
+    "3":
+      cast-speed: 5.0
+      max-mp: 150
+    "5":
+      cast-speed: 10.0
+      max-mp: 320
+      magic-def: 60
+  LEATHER:
+    "3":
+      crit-chance: 3.0
+      atk-speed: 2.0
+      move-speed: 2.0
+    "5":
+      crit-chance: 5.0
+      crit-dmg: 5.0
+      move-speed: 5.0
+  LIGHT:
+    "3":
+      atk-speed: 4.0
+      cast-speed: 3.0
+    "5":
+      atk-speed: 8.0
+      cast-speed: 5.0
+      strength: 10
+  HEAVY:
+    "3":
+      phys-def: 150
+      max-hp: 280
+    "5":
+      phys-def: 320
+      max-hp: 600
+      toughness: 3.0
+  PLATE:
+    "3":
+      phys-def: 180
+      magic-def: 120
+      toughness: 5.0
+    "5":
+      phys-def: 360
+      magic-def: 240
+      toughness: 10.0
+      max-hp: 240
+
+set-bonuses:
+  iron-guard:
+    "2":
+      phys-def: 80
+    "3":
+      max-hp: 220
+    "4":
+      toughness: 3.0
+    "5":
+      max-hp: 420
+      phys-def: 120
+  diamond-wind:
+    "2":
+      atk-speed: 2.0
+    "3":
+      move-speed: 3.0
+      crit-chance: 2.0
+    "4":
+      crit-dmg: 6.0
+    "5":
+      move-speed: 4.0
+      crit-dmg: 10.0
+
+class-armor-mastery:
+  enabled: true
+  strict-type-bonus: true
+  passive-skill-level-by-stage:
+    "0": 1
+    "1": 2
+    "2": 3
+  passive-skill-multiplier-by-level:
+    "1": 0.85
+    "2": 1.00
+    "3": 1.15
+  archetypes:
+    default: LEATHER
+    adventurer: LEATHER
+
+    slayer: HEAVY
+    slayer-f: HEAVY
+    fighter-m: LIGHT
+    fighter-f: LIGHT
+    gunner-m: LEATHER
+    gunner-f: LEATHER
+    mage-m: CLOTH
+    mage-f: CLOTH
+    priest-m: PLATE
+    priest-f: PLATE
+    archer: LEATHER
+    guardian: PLATE
+    shadow: LEATHER
+    dark-lancer: HEAVY
+    blaster: LIGHT
+
+    style:magic: CLOTH
+    style:ranged: LEATHER
+    style:assassin: LEATHER
+    style:melee: HEAVY
+    style:tank: PLATE
+    style:balanced: LIGHT
+
+  bonuses:
+    "3":
+      max-hp: 120
+    "4":
+      phys-def: 50
+      magic-def: 50
+
+  type-bonuses:
+    CLOTH:
+      "3":
+        cast-speed: 3.0
+        max-mp: 100
+      "5":
+        cast-speed: 6.0
+        max-mp: 220
+
+    LEATHER:
+      "3":
+        crit-chance: 2.0
+        move-speed: 1.5
+      "5":
+        crit-chance: 4.0
+        crit-dmg: 6.0
+
+    LIGHT:
+      "3":
+        atk-speed: 3.0
+        phys-atk: 45
+      "5":
+        atk-speed: 6.0
+        phys-atk: 100
+
+    HEAVY:
+      "3":
+        max-hp: 220
+        phys-def: 90
+      "5":
+        max-hp: 480
+        phys-def: 180
+
+    PLATE:
+      "3":
+        phys-def: 110
+        magic-def: 110
+      "5":
+        phys-def: 220
+        magic-def: 220
+        toughness: 3.0
+
+  mismatch-penalties:
+    "1":
+      atk-speed: -1.0
+      cast-speed: -1.0
+    "3":
+      atk-speed: -3.0
+      cast-speed: -3.0

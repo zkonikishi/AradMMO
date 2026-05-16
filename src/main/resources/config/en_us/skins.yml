@@ -1,0 +1,23 @@
+# -----------------------------------------------------------------------------
+# Arad MMO — Skin Configuration
+# -----------------------------------------------------------------------------
+
+# Skin station connection settings
+station:
+  # Whether skin-station integration is enabled
+  enabled: false
+  # Base URL without a trailing slash. Supports LittleSkin and Yggdrasil-compatible servers.
+  # Example: https://littleskin.cn or https://skin.example.com
+  url: "https://littleskin.cn"
+  # API type: littleskin (recommended) | yggdrasil (standard-compatible)
+  api-type: littleskin
+  # Cache expiration in minutes before querying again. 0 means never refresh automatically.
+  cache-expire-minutes: 60
+
+# Default skin settings
+# Values can be "steve", "alex", or a skin-station player name.
+defaults:
+  # Default skin for male adventurers
+  adventurer-male: steve
+  # Default skin for female adventurers
+  adventurer-female: alex

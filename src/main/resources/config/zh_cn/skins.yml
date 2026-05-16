@@ -1,0 +1,23 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Arad MMO — 皮肤配置文件
+# ─────────────────────────────────────────────────────────────────────────────
+
+# 皮肤站对接设置
+station:
+  # 是否启用皮肤站
+  enabled: false
+  # 皮肤站地址（末尾不加斜杠），支持 LittleSkin 和兼容 Yggdrasil 的自建站
+  # 示例: https://littleskin.cn  或  https://skin.example.com
+  url: "https://littleskin.cn"
+  # API 类型: littleskin（推荐）| yggdrasil（标准 Yggdrasil 兼容）
+  api-type: littleskin
+  # 每次查询皮肤站之前的缓存过期时间（分钟），0 表示永不重新查询
+  cache-expire-minutes: 60
+
+# 默认皮肤设置
+# 值可以是 "steve", "alex" 或皮肤站上的玩家名
+defaults:
+  # 冒险家男性默认皮肤
+  adventurer-male: steve
+  # 冒险家女性默认皮肤
+  adventurer-female: alex

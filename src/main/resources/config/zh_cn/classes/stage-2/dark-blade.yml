@@ -1,0 +1,24 @@
+id: dark-blade
+
+display: "dark-blade"
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: blaster
+
+combat-style: assassin
+
+armor-mastery: LEATHER
+
+external: false
+
+base-attributes:
+  strength:  10
+  spirit:   14
+  intellect: 6
+  vitality:  12
+
+default-skin: steve

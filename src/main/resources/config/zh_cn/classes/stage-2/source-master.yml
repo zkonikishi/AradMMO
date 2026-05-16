@@ -1,0 +1,24 @@
+id: source-master
+
+display: "source-master"
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: blaster
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  7
+  spirit:   10
+  intellect: 14
+  vitality:  11
+
+default-skin: steve

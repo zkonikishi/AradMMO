@@ -1,0 +1,25 @@
+id: lance-ranger
+
+display: "lance-ranger"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: dark-lancer
+
+combat-style: ranged
+
+armor-mastery: LEATHER
+
+external: false
+
+base-attributes:
+  strength:  9
+  spirit:   14
+  intellect: 7
+  vitality:  12
+
+default-skin: steve

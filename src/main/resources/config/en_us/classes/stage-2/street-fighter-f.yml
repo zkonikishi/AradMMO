@@ -1,0 +1,38 @@
+# ----------------------------------------
+# Class definition: Street Fighter (street-fighter-f)
+# ----------------------------------------
+
+# Unique class ID (usually no need to change)
+id: street-fighter-f
+
+# Display name shown in game
+display: "Street Fighter"
+
+# Gender restriction: any | male | female
+gender: female
+
+# Class stage: 0=adventurer 1=base class 2=advancement
+stage: 2
+
+# Required level to unlock
+requires-level: 20
+
+# Parent class ID (empty for adventurer)
+parent: fighter-f
+
+# Combat style (balanced/melee/ranged/magic/tank/assassin)
+combat-style: melee
+
+# Whether this is an external class (auto-unlocked and hidden from advancement menus)
+external: false
+
+# Base attributes (starting values before point allocation)
+base-attributes:
+  strength:  17
+  spirit:   10
+  intellect: 2
+  vitality:  13
+
+# Default preview skin
+# Allowed values: steve | alex | skin-station player name | url:https://... | base64:eyJ...
+default-skin: alex

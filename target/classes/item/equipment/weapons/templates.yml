@@ -1,0 +1,53 @@
+# Arad MMO - Weapons templates
+
+iron-sword-t1:
+  material: IRON_SWORD
+  name: "铁制短剑"
+  required-level: 1
+  arad-group: EQUIPMENT
+  arad-category: WEAPON
+  arad-part: WEAPON
+  arad-source: WEAPONS
+  arad-tags: [starter, common]
+  rarity: COMMON
+  stats:
+    phys-atk: 50.0
+    crit-chance: 2.0
+    max-hp: 100.0
+  lore:
+    - "&8一把锻造精良的铁剑。"
+
+diamond-sword-t3:
+  material: DIAMOND_SWORD
+  name: "蓝晶之刃"
+  required-level: 30
+  arad-group: EQUIPMENT
+  arad-category: WEAPON
+  arad-part: WEAPON
+  arad-source: WEAPONS
+  rarity: RARE
+  stats:
+    phys-atk: 220.0
+    crit-chance: 8.0
+    crit-dmg: 25.0
+    max-hp: 300.0
+  lore:
+    - "&8以纯净钻石铸就的强力武器。"
+
+staff-of-wisdom:
+  material: BLAZE_ROD
+  name: "智慧法杖"
+  required-level: 30
+  arad-group: EQUIPMENT
+  arad-category: WEAPON
+  arad-part: WEAPON
+  arad-source: WEAPONS
+  rarity: RARE
+  required-archetype: "MAGE"
+  stats:
+    magic-atk: 280.0
+    max-mp: 200.0
+    cast-speed: 10.0
+    intellect: 30
+  lore:
+    - "&8法师专属法杖，蕴含古老魔力。"

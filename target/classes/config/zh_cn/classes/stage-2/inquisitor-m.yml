@@ -1,0 +1,25 @@
+id: inquisitor-m
+
+display: "inquisitor-m"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: priest-m
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  7
+  spirit:   7
+  intellect: 14
+  vitality:  14
+
+default-skin: steve

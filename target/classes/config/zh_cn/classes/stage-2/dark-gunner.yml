@@ -1,0 +1,25 @@
+id: dark-gunner
+
+display: "dark-gunner"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: dark-lancer
+
+combat-style: assassin
+
+armor-mastery: LEATHER
+
+external: false
+
+base-attributes:
+  strength:  8
+  spirit:   15
+  intellect: 8
+  vitality:  11
+
+default-skin: steve

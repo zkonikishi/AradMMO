@@ -1,0 +1,25 @@
+id: ice-wizard
+
+display: "ice-wizard"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: mage-m
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  2
+  spirit:   7
+  intellect: 22
+  vitality:  7
+
+default-skin: steve

@@ -1,0 +1,24 @@
+id: soul-bender
+
+display: "soul-bender"
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: slayer
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  12
+  spirit:   10
+  intellect: 10
+  vitality:  10
+
+default-skin: steve

@@ -1,0 +1,22 @@
+world:
+  text: '<gold>[<green>%player_world%</green>]</gold>'
+  tip:
+    - '<gold>当前位置</gold>'
+    - '<gray>世界: <aqua>%player_world%</aqua></gray>'
+    - '<gray>坐标: <aqua>X:%x% Y:%y% Z:%z%</aqua></gray>'
+  click:
+    type: 'SUGGEST'
+    command: '/tp %player_name%'
+
+player:
+  text: '<aqua>%player_name%</aqua>'
+  tip:
+    - '<gray>等级: <yellow>%level%</yellow></gray>'
+    - '<gray>VIP: <light_purple>%vip_tier%</light_purple></gray>'
+    - '<gray>金币: <gold>%balance%</gold></gray>'
+  click:
+    type: 'SUGGEST'
+    command: '/tell %player_name% '
+
+admin:
+  text: '<gold>[<red>管理员</red>]</gold>'

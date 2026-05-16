@@ -1,0 +1,96 @@
+title: '<gold><bold>Arad MMO</bold></gold> <gray>— %player_name%'
+rows: 6
+
+dynamic:
+  attributes-start: 19
+  elements-start: 28
+  skills-start: 37
+  skills-max: 8
+
+items:
+  filler:
+    # Row 0 (minus head at slot 4), side columns, empty interior, row 5 (minus nav buttons)
+    slots: [0,1,2,3,5,6,7,8,9,16,17,18,23,24,25,26,27,32,33,34,35,36,44,45,49,50,51,52,53]
+    item: GRAY_STAINED_GLASS_PANE
+    name: ' '
+
+  player-head:
+    slots: [4]
+    function: player-head
+
+  level:
+    slots: [10]
+    item: EXPERIENCE_BOTTLE
+    function: level
+    name: '<aqua>等级 / 经验'
+    lore:
+      - '<gray>等级: <white>%level%'
+      - '<gray>经验: <white>%exp% / %max_exp%'
+
+  balance:
+    slots: [11]
+    item: GOLD_INGOT
+    function: balance
+    name: '<gold>金币'
+    lore:
+      - '<gray>余额: <white>%balance%'
+
+  vip:
+    slots: [12]
+    item: NETHER_STAR
+    function: vip
+    name: '<light_purple>VIP 等级'
+    lore:
+      - '<gray>当前: <white>%vip%'
+      - '<dark_gray>点击 → 渐变特权菜单'
+
+  nav-class:
+    slots: [13]
+    item: DIAMOND_SWORD
+    function: nav-class
+    name: '<green>职业'
+    lore:
+      - '<gray>当前: <white>%class%'
+      - '<dark_gray>点击 → 职业菜单'
+
+  nav-attributes:
+    slots: [14]
+    item: REDSTONE
+    function: nav-attributes
+    name: '<red>属性点'
+    lore:
+      - '<gray>可用: <white>%stat_points%'
+      - '<dark_gray>点击 → 属性菜单'
+
+  nav-skills:
+    slots: [15]
+    item: BLAZE_POWDER
+    function: nav-skills
+    name: '<yellow>技能点'
+    lore:
+      - '<gray>可用: <white>%skill_points%'
+      - '<dark_gray>点击 → 技能菜单'
+
+  nav-class-btn:
+    slots: [46]
+    item: COMPASS
+    function: nav-class
+    name: '<aqua>职业菜单'
+    lore:
+      - '<dark_gray>点击切换'
+
+  nav-skills-btn:
+    slots: [47]
+    item: ENCHANTING_TABLE
+    function: nav-skills
+    name: '<aqua>技能菜单'
+    lore:
+      - '<dark_gray>点击切换'
+
+  nav-attr-btn:
+    slots: [48]
+    item: REDSTONE
+    function: nav-attributes
+    name: '<red>属性菜单'
+    lore:
+      - '<dark_gray>点击分配属性'

@@ -1,0 +1,24 @@
+id: dark-templar
+
+display: "dark-templar"
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: slayer-f
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  13
+  spirit:   10
+  intellect: 8
+  vitality:  11
+
+default-skin: alex

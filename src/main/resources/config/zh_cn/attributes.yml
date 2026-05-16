@@ -1,0 +1,324 @@
+#
+# HP: 当前生命值/最大生命值。归零会死亡，部分技能消耗HP。
+# MP: 当前法力值/最大法力值。大多数技能消耗MP。
+#
+# 力量(STR): 提升物理伤害。每250点提升100%物理伤害。
+# 智力(INT): 提升魔法伤害。每250点提升100%魔法伤害。
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# Arad MMO — 属性定义文件
+#
+# 每个属性包含:
+#   display     游戏内显示名称（支持 MiniMessage）
+#   icon        GUI 图标（Bukkit Material 名称）
+#   lore        GUI 说明行（支持 MiniMessage，{value} 替换为每点数值）
+#   per-point   每加1点属性时的战斗效果（由 CombatService 读取）
+#
+# 战斗公式说明（combat-style 决定哪个属性作为主攻击属性）:
+#   物理职业 (melee/ranged/assassin/balanced) — strength 的 physical-multiplier 生效
+#   魔法职业 (magic)                          — intellect 的 magic-multiplier 生效
+#   均衡职业 (balanced)                        — STR 与 INT 各以 50% 效率生效
+#   独立攻击职业 (independent)                 — strength 的 independent-multiplier 生效
+# ─────────────────────────────────────────────────────────────────────────────
+
+strength:
+  display: "<white>力量 <gray>(STR)</gray></white>"
+  icon: IRON_SWORD
+  lore:
+    - "<gray>物理职业的核心属性"
+    - "<gray>提升物理/独立攻击强度"
+    - "<gray>影响物理攻击力（Physical Atk.）：决定百分比物理技能伤害"
+    - "<gray>影响独立攻击力（Independent Atk.）：决定固定伤害技能"
+    - "<gray>影响物理暴击率（Physical Crit）：只影响物理攻击"
+    - "<gray>每250点力量，物理伤害+100%"
+    - ""
+    - "<dark_gray>每点效果:"
+    - "<gray>  物理倍率 <white>+{physical-multiplier}</white>"
+    - "<gray>  独立攻击倍率 <white>+{independent-multiplier}</white>"
+  per-point:
+    # 对 melee / ranged / assassin / balanced 职业生效
+    physical-multiplier: 0.018
+    # 对 independent 战斗风格职业生效（格斗家系等）
+    independent-multiplier: 0.020
+
+spirit:
+  display: "<aqua>精神 <gray>(SPI)</gray></aqua>"
+  icon: BLAZE_POWDER
+  lore:
+    - "<gray>提升最大MP、MP回复速度与魔法防御"
+    - "<gray>影响魔法暴击率（Magical Crit）：只影响魔法攻击"
+    - "<gray>影响独立攻击力（Independent Atk.）：决定固定伤害技能"
+    - "<gray>每250点精神，最大MP与MP回复翻倍"
+    - "<gray>每点精神，魔法防御+0.5%"
+    - ""
+    - "<dark_gray>每点效果:"
+    - "<gray>  暴击率 <white>+{crit-chance}</white>"
+    - "<gray>  魔法减伤 <white>+{magic-reduction}</white>"
+  per-point:
+    # 暴击率提升（基础百分比，0.003 = 0.3%）
+    crit-chance: 0.003
+    # 魔法伤害减伤率 0.005 = 0.5%
+    magic-reduction: 0.005
+
+intellect:
+  display: "<light_purple>智力 <gray>(INT)</gray></light_purple>"
+  icon: ENDER_PEARL
+  lore:
+    - "<gray>魔法职业的核心属性"
+    - "<gray>提升魔法攻击强度"
+    - "<gray>影响魔法攻击力（Magical Atk.）：决定百分比魔法技能伤害"
+    - "<gray>影响独立攻击力（Independent Atk.）：决定固定伤害技能"
+    - "<gray>影响魔法暴击率（Magical Crit）：只影响魔法攻击"
+    - "<gray>每250点智力，魔法伤害+100%"
+    - ""
+    - "<dark_gray>每点效果:"
+    - "<gray>  魔法倍率 <white>+{magic-multiplier}</white>"
+  per-point:
+    # 对 magic / balanced 职业生效
+    magic-multiplier: 0.018
+
+vitality:
+  display: "<green>体力 <gray>(VIT)</gray></green>"
+  icon: GOLDEN_APPLE
+  lore:
+    - "<gray>提升最大HP、HP回复速度与物理防御"
+    - "<gray>影响物理暴击率（Physical Crit）：只影响物理攻击"
+    - "<gray>影响独立攻击力（Independent Atk.）：决定固定伤害技能"
+    - "<gray>每250点体力，最大HP与HP回复翻倍"
+    - "<gray>每点体力，物理防御+0.8%"
+    - ""
+    - "<dark_gray>每点效果:"
+    - "<gray>  最大 HP <white>+{max-hp}</white>"
+    - "<gray>  物理减伤 <white>+{damage-reduction}</white>"
+  per-point:
+    # 最大HP增量（平滑叠加，HpService 还会应用 VIT/250 翻倍系数）
+    max-hp: 2
+    # 物理伤害减伤率 0.008 = 0.8%
+    damage-reduction: 0.008
+
+stamina:
+  display: "<gold>耐力 <gray>(STA)</gray></gold>"
+  icon: FEATHER
+  lore:
+    - "<gray>提升最大耐力条上限与回复速度"
+    - "<gray>影响疾跑、游泳、滑翔的持续时间"
+    - ""
+    - "<dark_gray>每点效果:"
+    - "<gray>  最大耐力 (ST) <white>+{max-stamina}</white>"
+    - "<gray>  耐力回复 <white>+{regen-per-stamina}/秒</white>"
+    - ""
+    - "<dark_gray>提示: 背包负重与此属性无关，由等级和装备决定"
+  per-point:
+    max-stamina: 8
+    regen-per-stamina: 1
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 元素系统
+#
+# Arad 四大元素：火焰 / 冰霜 / 光明 / 暗黑
+#
+# 每位玩家对每种元素拥有两个值:
+#   attack  — 属性强化（攻击端）：造成该属性伤害时的额外加成%
+#   resist  — 属性抗性（防御端）：受到该属性伤害时的减免%
+#
+# 实际效果 = 攻击方 attack - 防御方 resist（单位：%）
+#   正值：攻击者有属性优势，伤害提升
+#   负值：防御者有属性优势，可能减伤
+#
+# 范围限制（服务端可自定义）
+#   minimum-bonus  下限（负值表示允许属性劣势减伤）
+#   maximum-bonus  上限（防止属性值堆叠过高）
+#
+# 玩家的元素值来源:
+#   1. 职业 base-elements（在职业 YAML 的 base-elements.attack/resist 中定义）
+#   2. 装备加成（未来实现）
+#   3. 管理员命令 /aradmmo element
+# ─────────────────────────────────────────────────────────────────────────────
+elements:
+  minimum-bonus: -50
+  maximum-bonus: 150
+
+  fire:
+    display: "<red>火属性 <gray>(火)</gray></red>"
+    icon: FIRE_CHARGE
+    color: "<red>"
+    lore:
+      - "<gray>在地下城中挥洒烈焰的力量"
+      - "<gray>提升火属性技能伤害，数值越高对火抗低的敌人伤害越强"
+      - "<gray>火属性抗性越高，受到火伤害越少"
+      - ""
+      - "<dark_gray>火属性强化 <red>{attack}%</red>  |  火属性抗性 <gold>{resist}%</gold>"
+
+  ice:
+    display: "<aqua>冰属性 <gray>(冰)</gray></aqua>"
+    icon: BLUE_ICE
+    color: "<aqua>"
+    lore:
+      - "<gray>封冻一切的极寒之力"
+      - "<gray>提升冰属性技能伤害，数值越高对冰抗低的敌人伤害越强"
+      - "<gray>冰属性抗性越高，受到冰伤害越少"
+      - ""
+      - "<dark_gray>冰属性强化 <aqua>{attack}%</aqua>  |  冰属性抗性 <blue>{resist}%</blue>"
+
+  light:
+    display: "<yellow>光属性 <gray>(光)</gray></yellow>"
+    icon: GLOWSTONE_DUST
+    color: "<yellow>"
+    lore:
+      - "<gray>圣光之力，净化黑暗"
+      - "<gray>提升光属性技能伤害，数值越高对光抗低的敌人伤害越强"
+      - "<gray>光属性抗性越高，受到光伤害越少"
+      - ""
+      - "<dark_gray>光属性强化 <yellow>{attack}%</yellow>  |  光属性抗性 <gold>{resist}%</gold>"
+
+  dark:
+    display: "<dark_purple>暗属性 <gray>(暗)</gray></dark_purple>"
+    icon: COAL_BLOCK
+    color: "<dark_purple>"
+    lore:
+      - "<gray>吞噬光明的深渊之力"
+      - "<gray>提升暗属性技能伤害，数值越高对暗抗低的敌人伤害越强"
+      - "<gray>暗属性抗性越高，受到暗伤害越少"
+      - ""
+      - "<dark_gray>暗属性强化 <dark_purple>{attack}%</dark_purple>  |  暗属性抗性 <purple>{resist}%</purple>"
+
+  # ── Arad元素伤害机制说明 ──
+  # 元素伤害提升（Elemental Damage Boost）：
+  #   提高对应属性技能的伤害值。
+  #   计算公式：1 + (你的元素强化+11-敌人元素抗性)/222
+  #   例如：火属性技能 → 用火属性强化与目标火抗性代入。
+  # 详情参见"元素"机制页面。
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Arad 附加状态机制备注（Additional Statuses）
+# 本区块为设计参考注释，不影响游戏数据读取。
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# 冒险者声望（Adventurer Fame）：
+#   衡量角色装备整体实力的综合评分，继承自旧版驱魔值（Exorcism）。
+#   来源：武器、装备套装、饰品、特殊装备、强化、锻造、附魔、称号、外观、宠物等。
+#   部分地下城需达到最低声望才能进入。
+#   ※ 暂未实现，作为后期扩展方向预留。
+#
+# 命中率（Hit Rate）：
+#   提升攻击命中概率。高难度地下城敌人闪避提升，需要更高命中率才能避免miss。
+#   ※ 暂未实现，可后续作为装备/称号属性加成项。
+#
+# 硬直强度（Hit Stun / Immobility）：
+#   攻击时对敌人造成的硬直持续时间。数值越高敌人被击后僵直越久。
+#   ※ 与 VIT 的 Hit Recovery 对应，两者互相制衡。
+#
+# 受击恢复（Hit Recovery）：
+#   减少自身被攻击后的僵直时间。数值越高受击后越快恢复行动。
+#   ※ 与 VIT 属性相关，后续可在 VIT per-point 中增加 hit-recovery 系数。
+#
+# HP回复（HP Recovery）：
+#   每秒自然恢复的HP量。越高HP恢复越快。
+#   ※ 已实现：hp.regen-base + vitality × hp.regen-per-vitality（/sec），每秒触发一次。
+#
+# MP回复（MP Recovery）：
+#   每秒自然恢复的MP量。越高MP恢复越快，升级和某些护甲精通会提升。
+#   ※ 已实现：mana.regen-base + spirit × mana.regen-per-spirit（/sec）。
+#
+# 最大背包负重（Max Inventory Weight）：
+#   角色能携带的最大重量，可通过装备、称号、升级提升。
+#   ※ 已实现：stamina.weight.base + level × stamina.weight.per-level。
+#
+# 疲劳值（Fatigue Points）：
+#   限制每日可进入地下城次数的消耗资源，与角色实力无关。
+#   工作日56点，周末176点；消耗完毕无法进入地下城。
+#   ※ 暂未实现，作为后期日常系统扩展预留。
+#
+# 技能点（Skill Points）：
+#   每次升级获得，用于学习和提升技能等级。
+#   ※ 已实现：通过 profile.skillPoints() 管理，每级获得 skill-per-level 点。
+#
+# 生命令牌（Life Tokens）：
+#   在地下城中死亡时消耗一枚，可原地复活并回满HP/MP，击倒屏幕内所有敌人。
+#   部分地下城限制令牌使用次数或禁止使用。
+#   ※ 暂未实现，作为后期地下城系统扩展预留。
+#
+# 套装积分（Set Point）：
+#   115级装备达到一定套装积分后触发特殊套装效果。
+#   ※ 暂未实现，作为后期装备系统扩展预留。
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# Arad 装备附加属性机制备注（Equipment Bonuses）
+# 仅可从装备、外观、宠物、附魔、称号等外部来源获得，无法通过属性加点获取。
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# 攻击力提升（Atk. Increase）：
+#   直接增加物理/魔法/独立攻击力数值。
+#   ※ 装备属性系统实现时作为 flat 加成项。
+#
+# 攻击力强化（Atk. Amp.）：
+#   以倍率加强物理/魔法/独立攻击力，效果强于 Atk. Increase。
+#   ※ 装备属性系统实现时作为 multiplier 加成项。
+#
+# 增益技能威力（Buff Power）：
+#   提升施加给队友的增益技能效果。仅对辅助职业生效。
+#   ※ 暂未实现，预留给辅助职业系统。
+#
+# 增益技能威力强化（Buff Power Amp.）：
+#   以倍率加强 Buff Power。
+#   ※ 暂未实现，预留给辅助职业系统。
+#
+# 全体伤害提升（Overall Damage Increase）：
+#   提升所有类型技能的总输出伤害。
+#   ※ 可在 CombatService 中作为最终乘区实现。
+#
+# 异常状态转化伤害（Convert Abnormal Status Dmg.）：
+#   将一定比例输出伤害转换为流血/中毒/燃烧/触电等状态伤害。
+#   ※ 暂未实现，预留给状态效果深度扩展。
+#
+# 最终冷却缩减（Final Cooldown Reduction）：
+#   冷却缩减与冷却恢复共同计算后的实际生效值，上限70%。
+#   ※ 暂未实现，预留给技能冷却系统扩展。
+#
+# 冷却缩减（Cooldown Reduction）：
+#   降低技能冷却时间。不适用于指定特定技能或觉醒技能的选项。
+#   与"冷却恢复"不同，请勿混淆。
+#   ※ 暂未实现，预留给技能冷却系统扩展。
+#
+# 冷却恢复（Cooldown Recovery）：
+#   加快技能冷却恢复速度。不适用于指定特定技能或觉醒技能的选项。
+#   与"冷却缩减"不同，请勿混淆。
+#   ※ 暂未实现，预留给技能冷却系统扩展。
+#
+# 命中率（Hit Rate）：
+#   提升命中概率，高难度地下城敌人闪避率更高。
+#   ※ 暂未实现，预留给地下城难度系统。
+#
+# ── 其他（100级及以下适用）──
+#
+# 伤害（Damage）：
+#   按百分比提升攻击伤害。同类型中只取最高值生效，不与 Overall Damage Increase 叠加。
+#
+# 暴击伤害（Critical Damage）：
+#   按百分比提升暴击伤害。同类型中只取最高值生效。
+#
+# 附加伤害（Bonus Damage）：
+#   按百分比提升附加伤害，包含额外元素伤害。所有来源可同时叠加。
+#
+# 全攻击力（All Atk.）：
+#   按百分比提升所有类型攻击力（物理/魔法/独立）。
+#
+# 物理攻击力（Physical Atk.）：
+#   按百分比提升物理攻击力。
+#
+# 魔法攻击力（Magic Atk.）：
+#   按百分比提升魔法攻击力。
+#
+# 独立攻击力（Independent Atk.）：
+#   按百分比提升独立攻击力。
+#
+# 力量（Strength，装备属性）：
+#   按百分比提升技能攻击力。
+#
+# 智力（Intelligence，装备属性）：
+#   按百分比提升技能攻击力。
+#
+# 持续伤害（Damage over Time）：
+#   按百分比施加持续伤害，持续时间由来源决定。
+#   ※ 可在 StatusEffectService DOT 机制中扩展为百分比模式。
+#

@@ -1,0 +1,38 @@
+# ----------------------------------------
+# Class definition: Dark Blade (dark-blade)
+# ----------------------------------------
+
+# Unique class ID (usually no need to change)
+id: dark-blade
+
+# Display name shown in game
+display: "Dark Blade"
+
+# Gender restriction: any | male | female
+gender: male
+
+# Class stage: 0=adventurer 1=base class 2=advancement
+stage: 2
+
+# Required level to unlock
+requires-level: 20
+
+# Parent class ID (empty for adventurer)
+parent: blaster
+
+# Combat style (balanced/melee/ranged/magic/tank/assassin)
+combat-style: assassin
+
+# Whether this is an external class (auto-unlocked and hidden from advancement menus)
+external: false
+
+# Base attributes (starting values before point allocation)
+base-attributes:
+  strength:  10
+  spirit:   14
+  intellect: 6
+  vitality:  12
+
+# Default preview skin
+# Allowed values: steve | alex | skin-station player name | url:https://... | base64:eyJ...
+default-skin: steve

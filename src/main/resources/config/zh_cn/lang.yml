@@ -1,0 +1,172 @@
+command:
+  help:
+    header: '<gold>Arad MMO 命令帮助</gold>'
+    help: '<yellow>/am help</yellow> <gray>- 查看命令帮助</gray>'
+    reload: '<yellow>/am reload</yellow> <gray>- 重载配置与语言文件</gray>'
+    lang: '<yellow>/am lang</yellow> <gray>- 查看当前语言</gray>'
+    profile: '<yellow>/am profile [玩家]</yellow> <gray>- 查看角色资料</gray>'
+    addxp: '<yellow>/am addxp <玩家> <数值></yellow> <gray>- 添加经验</gray>'
+    money: '<yellow>/am money <set|add|take> <玩家> <数值></yellow> <gray>- 管理金币</gray>'
+    vip: '<yellow>/am vip <玩家> <等级></yellow> <gray>- 设置 VIP 等级</gray>'
+    class: '<yellow>/am class <玩家> <职业></yellow> <gray>- 设置职业并重置成长分配</gray>'
+    stats: '<yellow>/am stats [玩家]</yellow> <gray>- 查看属性与剩余属性点</gray>'
+    stat: '<yellow>/am stat <玩家> <属性> <数值></yellow> <gray>- 分配属性点</gray>'
+    resetstats: '<yellow>/am resetstats <玩家></yellow> <gray>- 重置属性分配并退还点数</gray>'
+    skills: '<yellow>/am skills [玩家]</yellow> <gray>- 查看技能树</gray>'
+    skill: '<yellow>/am skill <玩家> <技能> <数值></yellow> <gray>- 分配技能点</gray>'
+    cast: '<yellow>/am cast <技能></yellow> <gray>- 主动释放技能</gray>'
+    menu: '<yellow>/am menu</yellow> <gray>- 打开角色菜单</gray>'
+    pet: '<yellow>/am pet <info|skills|learn|mode|give></yellow> <gray>- 宠物信息/技能GUI/行为模式/学习/发放</gray>'
+    top: '<yellow>/am top [level|balance]</yellow> <gray>- 查看排行榜</gray>'
+    gender: '<yellow>/am gender [玩家] <male|female></yellow> <gray>- 设置角色性别</gray>'
+    element: '<yellow>/am element <玩家> <attack|resist> <元素> <数值></yellow> <gray>- 设置元素强化/抗性</gray>'
+    vipcolor: '<yellow>/am vipcolor <name|chat|random></yellow> <gray>- 设置VIP渐变名字/聊天颜色</gray>'
+    chat: '<yellow>/am chat <on|off|reload|route></yellow> <gray>- 开关聊天接收、重载配置、查看/切换路由组，支持 list/save</gray>'
+    equip: '<yellow>/am equip [debug armor [玩家]]</yellow> <gray>- 打开装备界面或查看防具件数/套装/精通调试信息</gray>'
+  reload:
+    done: '<green>Arad MMO 已完成重载。</green>'
+  lang:
+    current: '<gray>当前语言:</gray> <aqua>%locale%</aqua>'
+  profile:
+    header: '<gold>%player% 的资料</gold>'
+    level: '<gray>等级:</gray> <aqua>%value%</aqua>'
+    exp: '<gray>经验:</gray> <aqua>%value%</aqua><gray>/</gray><aqua>%needed%</aqua>'
+    balance: '<gray>金币:</gray> <gold>%value%</gold>'
+    vip: '<gray>VIP:</gray> <light_purple>%value%</light_purple>'
+    class: '<gray>职业:</gray> <green>%value%</green>'
+    points: '<gray>可用点数:</gray> <yellow>属性 %stat%</yellow> <gray>/</gray> <yellow>技能 %skill%</yellow>'
+  addxp:
+    done: '<green>已为 %player% 添加 %value% 经验，当前等级 %level%。</green>'
+    level-up: '<gold>%player% 本次提升了 %value% 级，获得 %stat% 属性点与 %skill% 技能点。</gold>'
+  money:
+    done: '<green>已执行 %mode% 操作，%player% 当前金币为 %value%。</green>'
+  vip:
+    done: '<green>已将 %player% 的 VIP 设置为 %value%。</green>'
+  class:
+    done: '<green>已将 %player% 的职业设置为 %value%，并重置成长分配。</green>'
+    advance-done: '<gold>%player% 已转职为 %value%！</gold>'
+    locked: '<yellow>需要 %level% 级才能解锁该职业路线。</yellow>'
+  stats:
+    header: '<gold>%player% 的属性</gold>'
+    points: '<gray>剩余属性点:</gray> <yellow>%value%</yellow>'
+    entry: '<gray>%attribute%:</gray> <aqua>%value%</aqua>'
+  stat:
+    done: '<green>%player% 的 %attribute% 已提升至 %value%，剩余属性点 %points%。</green>'
+  resetstats:
+    done: '<green>已重置 %player% 的属性，退还属性点，当前剩余 %points% 点。</green>'
+  skills:
+    header: '<gold>%player% 的技能树</gold>'
+    points: '<gray>剩余技能点:</gray> <yellow>%value%</yellow>'
+    empty: '<gray>当前尚未学习任何技能。</gray>'
+    entry: '<gray>%skill%:</gray> <aqua>%value%</aqua><gray>/</gray><aqua>%cap%</aqua>'
+  skill:
+    done: '<green>%player% 的技能 %skill% 已提升至 %value%，剩余技能点 %points%。</green>'
+  cast:
+    done: '<aqua>技能</aqua> <yellow>%skill%</yellow> <aqua>已激活！</aqua>'
+  gender:
+    done: '<green>已将角色性别设置为 %value%。</green>'
+    done-admin: '<green>已将 %player% 的性别设置为 %value%。</green>'
+    already-set: '<red>性别已设置，无法再次更改。如需修改请联系管理员。</red>'
+  element:
+    done: '<green>已将 %player% 的 %element% %mode% 设置为 %value%。</green>'
+  top:
+    header: '<gold>排行榜 — %mode%</gold>'
+    entry: '<gray>#%rank% <white>%player% <yellow>%value%</yellow></gray>'
+  pet:
+    learn-done: '<green>宠物技能学习成功: %value%</green>'
+    mode-done: '<green>宠物行为模式已切换为: %value%</green>'
+    give-done: '<green>已给予 %player% 宠物道具: %value%</green>'
+  equip:
+    debug:
+      header: '<gold>[装备调试] %player%</gold>'
+      profile: '<gray>职业键:</gray> <aqua>%archetype%</aqua> <gray>精通:</gray> <yellow>%mastery%</yellow> <gray>enabled:</gray> <white>%enabled%</white> <gray>strict:</gray> <white>%strict%</white>'
+      passive-skill: '<gray>精通被动:</gray> <white>stage=%stage%</white> <white>level=%level%</white> <white>x%multiplier%</white>'
+      counts: '<gray>件数:</gray> <white>total=%total%</white> <white>mastered=%mastered%</white> <white>mismatch=%mismatch%</white>'
+      types: '<gray>类型件数:</gray> <white>%value%</white>'
+      sets: '<gray>套装件数:</gray> <white>%value%</white>'
+      type-bonuses: '<gray>类型加成:</gray> <white>%value%</white>'
+      set-bonuses: '<gray>套装加成:</gray> <white>%value%</white>'
+      mastery-bonuses: '<gray>精通加成:</gray> <white>%value%</white>'
+      mastery-type-bonuses: '<gray>精通分型加成:</gray> <white>%value%</white>'
+      mismatch-penalties: '<gray>混穿惩罚:</gray> <white>%value%</white>'
+  vipcolor:
+    name.done: '<green>已设置渐变名字颜色: %value%</green>'
+    chat.done: '<green>已设置渐变聊天颜色: %value%</green>'
+    both.done: '<green>已设置名字与聊天渐变颜色: %value%</green>'
+  chat:
+    reloaded: '<green>聊天子系统配置已重载。</green>'
+    on: '<green>聊天接收已开启。</green>'
+    off: '<yellow>聊天接收已关闭。</yellow>'
+    route-status: '<aqua>当前跨服聊天路由:</aqua> <gray>group=</gray><yellow>%group%</yellow> <gray>server=</gray><yellow>%server%</yellow> <gray>targets=</gray><yellow>%targets%</yellow>'
+    route-list-header: '<aqua>可用跨服聊天路由组:</aqua>'
+    route-list-entry: '<gray>- </gray><yellow>%group%</yellow>%flags%<gray>: </gray><white>%targets%</white>'
+    route-list-empty: '<yellow>当前没有可用的跨服聊天路由组。</yellow>'
+    route-set: '<green>跨服聊天路由组已切换为: %value%</green>'
+    route-cleared: '<yellow>跨服聊天路由组覆盖已清除，恢复使用配置文件设置。</yellow>'
+    route-saved: '<green>跨服聊天路由组已保存到配置: %value%</green>'
+
+error:
+  no-permission: '<red>你没有权限执行这个命令。</red>'
+  invalid-gender: '<red>无效性别: %value%，请输入 male 或 female。</red>'
+  unknown-subcommand: '<red>未知子命令: %value%</red>'
+  player-required: '<red>该命令只能由玩家自查，或附带目标玩家参数。</red>'
+  player-not-found: '<red>找不到在线玩家: %value%</red>'
+  invalid-number: '<red>无效数值: %value%</red>'
+  usage: '<red>用法: %value%</red>'
+  invalid-class: '<red>未知职业: %value%</red>'
+  invalid-attribute: '<red>未知属性: %value%</red>'
+  invalid-skill: '<red>未知技能: %value%</red>'
+  not-enough-stat-points: '<red>剩余属性点不足。</red>'
+  not-enough-skill-points: '<red>剩余技能点不足。</red>'
+  skill-cap: '<red>技能 %value% 已达到上限。</red>'
+  skill-cooldown: '<red>技能 %skill% 冷却中，还需 %seconds% 秒。</red>'
+  skill-not-learned: '<red>你尚未学习技能 %skill%。</red>'
+  no-mana: '<red>MP 不足，无法释放技能！</red>'
+  invalid-element: '<red>未知元素: %value%</red>'
+  invalid-gradient: '<red>无效渐变格式: %value%，请使用 #RRGGBB:#RRGGBB</red>'
+  invalid-chat-route: '<red>未知聊天路由组: %value%</red>'
+  chat-route-save-failed: '<red>保存聊天路由配置失败，请检查文件写入权限。</red>'
+  invalid-pet: '<red>未知宠物ID: %value%</red>'
+  pet-no-active: '<red>当前没有已装备的宠物。</red>'
+  pet-learn-failed: '<red>宠物技能学习失败: %value%（技能不存在、已学习或点数不足）</red>'
+  equip-debug-unavailable: '<red>无法获取 %player% 的装备调试信息（玩家装备数据未加载）。</red>'
+
+gui:
+  profile:
+    attr-value: '<gray>数值: <white>%value%'
+    skill-level: '<gray>等级: <white>%level% / %cap%'
+  attr:
+    current: '<gray>当前: <white>%value%'
+    remaining: '<gray>剩余属性点: <white>%value%'
+    add-btn: '<green>[+1]'
+    add-btn-lore: '<dark_gray>点击消耗1属性点'
+    no-points-btn: '<red>点数不足'
+  skill:
+    level: '<gray>等级: <white>%level% / %cap%'
+    remaining: '<gray>剩余技能点: <white>%value%'
+    capped-label: '<red>已达上限'
+    add-btn: '<green>[+1]'
+    add-btn-lore: '<dark_gray>点击消耗1技能点'
+    maxed-btn: '<red>已满级'
+    no-points-btn: '<red>点数不足'
+  class:
+    locked-0-title: '<red>尚未解锁初始职业'
+    current-level: '<gray>当前等级: <white>%value%'
+    locked-0-hint: '<yellow>达到10级后可选择初始职业'
+    locked-1-hint: '<yellow>达到20级后可进行一转'
+    advance-reset: '<dark_gray>一转将重置属性分配'
+    maxed-stage: '<gray>转职阶段: <white>最终职业'
+    maxed-note: '<dark_gray>已达到最终职业，无法继续转职'
+    select-hint: '<dark_gray>点击选择此职业'
+    advance-hint: '<dark_gray>点击进行一转 (重置属性)'
+    attr-line: '<gray>力%str% 精%spi% 智%itl% 体%vit%'
+  gender:
+    male: '♂ 男性'
+    female: '♀ 女性'
+
+event:
+  kill:
+    reward: '<dark_gray>击杀 %mob%  <green>+%xp% XP  <gold>+%gold% 金币'
+    level-up: '<gold>⬆ 等级提升 +%levels%！<gray>当前 Lv.%level%  <green>属性点 +%stat%  <aqua>技能点 +%skill%'
+  death:
+    penalty: '<red>☠ 你死亡了！<dark_gray>损失 <red>%exp% XP  <gold>%gold% 金币'

@@ -1,0 +1,24 @@
+id: chaos-specter
+
+display: "chaos-specter"
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: guardian
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  7
+  spirit:   8
+  intellect: 13
+  vitality:  14
+
+default-skin: alex

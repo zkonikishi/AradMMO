@@ -1,0 +1,313 @@
+# ══════════════════════════════════════════════════════════════
+#  Arad 装备槽位定义 (6行×9列 = 54格)
+#
+#  槽位布局示意 (行×列):
+#  行0 (0-8)  : ░░░░░░░░░  (填充/标题行)
+#  行1 (9-17) : [头盔=9 ][上衣=10] ░░░░░ [武器=16][称号=17]
+#  行2 (18-26): [下装=18][腰带=19] ░░░░░ [项链=25][手镯=26]
+#  行3 (27-35): [鞋  =27][ ....=28] ░░░░░ [辅助=34][戒指=35]
+#  行4 (36-44): ░░░░░░░░░░░░░░░░░░░ [耳环=43][魔法石=44]
+#  行5 (45-53): [宠物=45][背包=46][鞘翅=47] ░ [属性=49][工作台=50] ░░ [盾=53]
+# ══════════════════════════════════════════════════════════════
+
+# 填充槽位的物品材质 (不是装备槽位时显示)
+fill: GRAY_STAINED_GLASS_PANE
+
+slots:
+
+  # ── 左列 (防具) ──────────────────────────────────────────────
+
+  helmet:
+    type: ARMOR
+    slot: 9
+    holder:
+      item: CHAINMAIL_HELMET
+      name: "&a&l头盔"
+      lore:
+        - "&6&o装备头部护具"
+    allowed-types:
+      - ARMOR
+    items:
+      - LEATHER_HELMET
+      - CHAINMAIL_HELMET
+      - IRON_HELMET
+      - GOLD_HELMET
+      - GOLDEN_HELMET
+      - DIAMOND_HELMET
+      - NETHERITE_HELMET
+      - TURTLE_HELMET
+
+  chestplate:
+    type: ARMOR
+    slot: 10
+    holder:
+      item: IRON_CHESTPLATE
+      name: "&a&l上衣"
+      lore:
+        - "&6&o装备胸部护甲"
+    allowed-types:
+      - ARMOR
+    items:
+      - LEATHER_CHESTPLATE
+      - CHAINMAIL_CHESTPLATE
+      - IRON_CHESTPLATE
+      - GOLD_CHESTPLATE
+      - GOLDEN_CHESTPLATE
+      - DIAMOND_CHESTPLATE
+      - NETHERITE_CHESTPLATE
+
+  leggings:
+    type: ARMOR
+    slot: 18
+    holder:
+      item: IRON_LEGGINGS
+      name: "&a&l下装"
+      lore:
+        - "&6&o装备腿部护具"
+    allowed-types:
+      - ARMOR
+    items:
+      - LEATHER_LEGGINGS
+      - CHAINMAIL_LEGGINGS
+      - IRON_LEGGINGS
+      - GOLD_LEGGINGS
+      - GOLDEN_LEGGINGS
+      - DIAMOND_LEGGINGS
+      - NETHERITE_LEGGINGS
+
+  belt:
+    type: PASSIVE
+    slot: 19
+    holder:
+      item: STRING
+      name: "&a&l腰带"
+      lore:
+        - "&6&o装备腰带"
+    allowed-types:
+      - ACCESSORY
+      - ORNAMENT
+    items:
+      - STRING
+
+  boots:
+    type: ARMOR
+    slot: 27
+    holder:
+      item: IRON_BOOTS
+      name: "&a&l鞋"
+      lore:
+        - "&6&o装备鞋类护具"
+    allowed-types:
+      - ARMOR
+    items:
+      - LEATHER_BOOTS
+      - CHAINMAIL_BOOTS
+      - IRON_BOOTS
+      - GOLD_BOOTS
+      - GOLDEN_BOOTS
+      - DIAMOND_BOOTS
+      - NETHERITE_BOOTS
+
+  # ── 右列 (武器与饰品) ────────────────────────────────────────
+
+  weapon:
+    type: ACTIVE
+    slot: 16
+    quickbar: 0
+    holder:
+      item: IRON_SWORD
+      name: "&a&l武器"
+      lore:
+        - "&6&o装备主武器"
+    allowed-types:
+      - SWORD
+      - DAGGER
+      - SPEAR
+      - HAMMER
+      - GAUNTLET
+      - WHIP
+      - STAFF
+      - BOW
+      - CROSSBOW
+      - MUSKET
+      - LUTE
+      - TOOL
+      - CATALYST
+      - MAIN_CATALYST
+    items:
+      - WOODEN_SWORD
+      - STONE_SWORD
+      - IRON_SWORD
+      - GOLDEN_SWORD
+      - DIAMOND_SWORD
+      - NETHERITE_SWORD
+      - WOODEN_AXE
+      - STONE_AXE
+      - IRON_AXE
+      - GOLDEN_AXE
+      - DIAMOND_AXE
+      - NETHERITE_AXE
+      - BOW
+      - TRIDENT
+      - CROSSBOW
+
+  title:
+    type: PASSIVE
+    slot: 17
+    holder:
+      item: NETHER_STAR
+      name: "&a&l称号"
+      lore:
+        - "&6&o装备称号物品"
+    allowed-types:
+      - ACCESSORY
+      - ORNAMENT
+    items:
+      - NETHER_STAR
+
+  necklace:
+    type: PASSIVE
+    slot: 25
+    holder:
+      item: GOLD_INGOT
+      name: "&a&l项链"
+      lore:
+        - "&6&o装备项链"
+    allowed-types:
+      - ACCESSORY
+      - ORNAMENT
+    items:
+      - GOLD_INGOT
+
+  bracelet:
+    type: PASSIVE
+    slot: 26
+    holder:
+      item: GOLD_NUGGET
+      name: "&a&l手镯"
+      lore:
+        - "&6&o装备手镯"
+    allowed-types:
+      - ACCESSORY
+      - ORNAMENT
+    items:
+      - GOLD_NUGGET
+
+  sub-equipment:
+    type: PASSIVE
+    slot: 34
+    holder:
+      item: ENDER_PEARL
+      name: "&a&l辅助装备"
+      lore:
+        - "&6&o装备辅助物品"
+    allowed-types:
+      - ACCESSORY
+      - ORNAMENT
+    items:
+      - ENDER_PEARL
+
+  ring:
+    type: PASSIVE
+    slot: 35
+    holder:
+      item: IRON_NUGGET
+      name: "&a&l戒指"
+      lore:
+        - "&6&o装备戒指"
+    allowed-types:
+      - ACCESSORY
+      - ORNAMENT
+    items:
+      - IRON_NUGGET
+
+  earring:
+    type: PASSIVE
+    slot: 43
+    holder:
+      item: FEATHER
+      name: "&a&l耳环"
+      lore:
+        - "&6&o装备耳环"
+    allowed-types:
+      - ACCESSORY
+      - ORNAMENT
+    items:
+      - FEATHER
+
+  magic-gem:
+    type: PASSIVE
+    slot: 44
+    holder:
+      item: AMETHYST_SHARD
+      name: "&a&l魔法石"
+      lore:
+        - "&6&o装备魔法宝石"
+    allowed-types:
+      - GEM_STONE
+      - ACCESSORY
+    items:
+      - AMETHYST_SHARD
+
+  # ── 功能行 (第5行, 槽位 45-53) ──────────────────────────────
+
+  pet:
+    type: PET
+    slot: 45
+    holder:
+      item: BONE
+      name: "&a&l宠物槽"
+      lore:
+        - "&6&o放置宠物物品"
+
+  backpack:
+    type: BACKPACK
+    slot: 46
+    drop: false
+    holder:
+      item: CHEST
+      name: "&a&l背包槽"
+      lore:
+        - "&6&o放置背包"
+
+  elytra:
+    type: ELYTRA
+    slot: 47
+    holder:
+      item: ELYTRA
+      name: "&a&l鞘翅槽"
+      lore:
+        - "&6&o放置鞘翅 (滑翔时自动装备)"
+
+  info:
+    type: INFO
+    slot: 49
+    holder:
+      item: BOOK
+      name: "&a&l角色属性"
+      lore:
+        - "&c❤ 生命: &7%hp_current% &8/ &7%hp_max%"
+        - "&b✦ 魔力: &7%mp_current% &8/ &7%mp_max%"
+        - "&e⚡ 耐力: &7%st_current% &8/ &7%st_max%"
+        - "&f等级: &7%level%"
+
+  craft:
+    type: ACTION
+    slot: 50
+    action: WORKBENCH
+    holder:
+      item: CRAFTING_TABLE
+      name: "&a&l工作台"
+      lore:
+        - "&6&o点击打开工作台"
+
+  shield:
+    type: SHIELD
+    slot: 53
+    holder:
+      item: SHIELD
+      name: "&a&l盾牌槽"
+      lore:
+        - "&6&o装备盾牌"
+    items:
+      - SHIELD

@@ -1,0 +1,25 @@
+id: priest-m
+
+display: "priest-m"
+
+gender: male
+
+stage: 1
+
+requires-level: 10
+
+parent: adventurer
+
+combat-style: tank
+
+armor-mastery: PLATE
+
+external: false
+
+base-attributes:
+  strength:  6
+  spirit:   4
+  intellect: 8
+  vitality:  10
+
+default-skin: steve

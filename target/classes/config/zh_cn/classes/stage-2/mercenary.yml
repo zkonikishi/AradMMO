@@ -1,0 +1,24 @@
+id: mercenary
+
+display: "mercenary"
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: blaster
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  13
+  spirit:   11
+  intellect: 5
+  vitality:  13
+
+default-skin: steve

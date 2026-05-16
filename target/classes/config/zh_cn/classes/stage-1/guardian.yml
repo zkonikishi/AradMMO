@@ -1,0 +1,25 @@
+id: guardian
+
+display: "guardian"
+
+gender: female
+
+stage: 1
+
+requires-level: 10
+
+parent: adventurer
+
+combat-style: tank
+
+armor-mastery: PLATE
+
+external: false
+
+base-attributes:
+  strength:  6
+  spirit:   5
+  intellect: 5
+  vitality:  12
+
+default-skin: alex

@@ -1,0 +1,25 @@
+id: dark-lancer
+
+display: "dark-lancer"
+
+gender: male
+
+stage: 1
+
+requires-level: 10
+
+parent: adventurer
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  7
+  spirit:   7
+  intellect: 5
+  vitality:  9
+
+default-skin: steve

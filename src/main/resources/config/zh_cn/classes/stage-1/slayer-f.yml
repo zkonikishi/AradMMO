@@ -1,0 +1,25 @@
+id: slayer-f
+
+display: "slayer-f"
+
+gender: female
+
+stage: 1
+
+requires-level: 10
+
+parent: adventurer
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  8
+  spirit:   8
+  intellect: 3
+  vitality:  9
+
+default-skin: alex

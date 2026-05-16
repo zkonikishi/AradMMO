@@ -1,0 +1,88 @@
+# Arad MMO - Accessories templates
+
+ring-of-power:
+  material: GOLD_NUGGET
+  name: "力量之戒"
+  required-level: 15
+  arad-group: EQUIPMENT
+  arad-category: ACCESSORY
+  arad-part: RING
+  arad-source: ACCESSORIES
+  rarity: UNCOMMON
+  stats:
+    phys-atk: 80.0
+    strength: 15
+    crit-chance: 3.0
+  lore:
+    - "&8戴上它，感受力量的涌动。"
+
+necklace-of-vitality:
+  material: GOLD_INGOT
+  name: "活力项链"
+  required-level: 15
+  arad-group: EQUIPMENT
+  arad-category: ACCESSORY
+  arad-part: NECKLACE
+  arad-source: ACCESSORIES
+  rarity: UNCOMMON
+  stats:
+    max-hp: 500.0
+    vitality: 20
+    life-steal: 3.0
+  lore:
+    - "&8蕴含生命之力的项链。"
+
+speed-bracelet:
+  material: GOLD_NUGGET
+  name: "疾风手镯"
+  required-level: 15
+  arad-group: EQUIPMENT
+  arad-category: ACCESSORY
+  arad-part: BRACELET
+  arad-source: ACCESSORIES
+  rarity: UNCOMMON
+  stats:
+    move-speed: 8.0
+    atk-speed: 10.0
+    cast-speed: 5.0
+  lore:
+    - "&8轻盈如风，加快你的脚步。"
+
+mythic-bracelet-demo:
+  material: BLAZE_POWDER
+  name: "神话·星辉手镯"
+  required-level: 60
+  arad-group: EQUIPMENT
+  arad-category: ACCESSORY
+  arad-part: BRACELET
+  arad-source: ACCESSORIES
+  arad-tags: [demo, mythic]
+  rarity: MYTHIC
+  grade: SUPERIOR
+  stats:
+    max-hp: 1800
+    life-steal: 8.0
+    crit-chance: 6.0
+    cast-speed: 10.0
+  lore:
+    - "&8神话级试作装备。"
+
+primeval-ring-demo:
+  material: HEART_OF_THE_SEA
+  name: "太初·原初之环"
+  required-level: 70
+  arad-group: EQUIPMENT
+  arad-category: ACCESSORY
+  arad-part: RING
+  arad-source: ACCESSORIES
+  arad-tags: [demo, primeval]
+  rarity: PRIMEVAL
+  grade: SUPERIOR
+  stats:
+    phys-atk: 260
+    magic-atk: 260
+    crit-dmg: 30.0
+    move-speed: 10.0
+    max-hp: 1200
+  lore:
+    - "&8太初级试作装备。"

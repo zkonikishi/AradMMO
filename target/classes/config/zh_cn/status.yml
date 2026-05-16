@@ -1,0 +1,262 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Arad MMO — 状态效果定义文件
+#
+# 每个条目 key 为状态 ID（小写，用 '-' 分隔），包含以下字段:
+#
+#   display        游戏内显示名 (MiniMessage)
+#   icon           ActionBar / GUI 图标 (Bukkit Material)
+#   effect-type    行为类型，决定 Java 端如何处理：
+#                    crowd-control  控制类（限制移动/行动）
+#                    dot            持续伤害
+#                    debuff         削弱（降低能力）
+#                    buff           增益（提升能力）
+#   default-duration   默认持续 ticks（20 ticks = 1 秒），可在调用时覆盖
+#   break-on-damage    受伤时是否解除（适用于睡眠等）
+#   stackable          是否可以叠加层数（DOT 类用）
+#   max-stacks         最大叠加层数
+#
+# crowd-control 专属字段:
+#   movement       是否限制移动（使用 SLOWNESS 255）
+#   actions        是否限制行动（使用 MINING_FATIGUE 255）
+#
+# dot 专属字段:
+#   damage-type        伤害类型: fire | physical | magic | true
+#   base-damage        每次跳伤害（基础值，服务端可调）
+#   tick-interval      每隔多少 ticks 造成一次伤害（默认 20 = 1秒）
+#
+# debuff 专属字段:
+#   potion-effect      应用的药水效果 ID（Bukkit PotionEffectType 名）
+#   potion-amplifier   药水等级（0 = I, 1 = II ...）
+#
+# buff 专属字段:
+#   potion-effect      同上
+#   potion-amplifier   同上
+#
+# particle 字段（所有类型通用，可选）:
+#   particle           粒子效果名（Bukkit Particle 枚举），留空则不播放
+#   particle-count     每次粒子数量
+#
+# 【可自定义性说明】
+#   - 直接删除某个条目即可从游戏中移除该状态
+#   - 新增条目无需修改 Java 代码，只要 effect-type 匹配已支持的类型即可
+#   - 修改数值（伤害、时长、药水等级等）立即生效（需 /am reload）
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ══════════════════ 控制类 (crowd-control) ══════════════════
+
+stun:
+  display: "<gray>✦ 昏迷</gray>"
+  icon: BARRIER
+  effect-type: crowd-control
+  default-duration: 60        # 3秒
+  break-on-damage: false
+  stackable: false
+  movement: true
+  actions: true
+  particle: SMOKE_NORMAL
+  particle-count: 4
+
+freeze:
+  display: "<aqua>❄ 冰冻</aqua>"
+  icon: BLUE_ICE
+  effect-type: crowd-control
+  default-duration: 80        # 4秒
+  break-on-damage: false
+  stackable: false
+  movement: true
+  actions: false              # 可以施法但无法移动
+  particle: SNOWFLAKE
+  particle-count: 6
+
+petrify:
+  display: "<gray>⬛ 石化</gray>"
+  icon: STONE
+  effect-type: crowd-control
+  default-duration: 100       # 5秒
+  break-on-damage: false
+  stackable: false
+  movement: true
+  actions: true
+  particle: BLOCK_DUST
+  particle-count: 5
+
+sleep:
+  display: "<dark_blue>💤 睡眠</dark_blue>"
+  icon: BED
+  effect-type: crowd-control
+  default-duration: 120       # 6秒
+  break-on-damage: true       # 受伤即醒
+  stackable: false
+  movement: true
+  actions: true
+  particle: CLOUD
+  particle-count: 2
+
+fear:
+  display: "<yellow>⚡ 恐惧</yellow>"
+  icon: SOUL_SAND
+  effect-type: crowd-control
+  default-duration: 60        # 3秒
+  break-on-damage: false
+  stackable: false
+  movement: false             # 会乱跑，不是完全限制
+  actions: true
+  particle: SMOKE_LARGE
+  particle-count: 3
+
+# ══════════════════ 持续伤害 (dot) ══════════════════
+
+burn:
+  display: "<red>🔥 燃烧</red>"
+  icon: FIRE_CHARGE
+  effect-type: dot
+  default-duration: 100       # 5秒
+  break-on-damage: false
+  stackable: true
+  max-stacks: 3
+  damage-type: fire
+  base-damage: 2.0
+  tick-interval: 20           # 每1秒跳一次
+  particle: FLAME
+  particle-count: 5
+
+bleed:
+  display: "<dark_red>🗡 流血</dark_red>"
+  icon: REDSTONE
+  effect-type: dot
+  default-duration: 100
+  break-on-damage: false
+  stackable: true
+  max-stacks: 5
+  damage-type: physical
+  base-damage: 1.5
+  tick-interval: 20
+  particle: BLOCK_CRACK
+  particle-count: 4
+
+poison:
+  display: "<dark_green>☠ 中毒</dark_green>"
+  icon: SPIDER_EYE
+  effect-type: dot
+  default-duration: 120       # 6秒
+  break-on-damage: false
+  stackable: true
+  max-stacks: 3
+  damage-type: magic
+  base-damage: 1.8
+  tick-interval: 20
+  particle: SPELL_MOB
+  particle-count: 4
+
+shock:
+  display: "<yellow>⚡ 感电</yellow>"
+  icon: LIGHTNING_ROD
+  effect-type: dot
+  default-duration: 60        # 3秒
+  break-on-damage: false
+  stackable: false
+  damage-type: magic
+  base-damage: 2.5
+  tick-interval: 15           # 更快的跳伤
+  particle: ELECTRIC_SPARK
+  particle-count: 6
+
+# ══════════════════ 削弱类 (debuff) ══════════════════
+
+slow:
+  display: "<blue>⬇ 减速</blue>"
+  icon: ICE
+  effect-type: debuff
+  default-duration: 100
+  break-on-damage: false
+  stackable: false
+  potion-effect: SLOWNESS
+  potion-amplifier: 1
+  particle: CLOUD
+  particle-count: 2
+
+weaken:
+  display: "<gray>↓ 弱化</gray>"
+  icon: ROTTEN_FLESH
+  effect-type: debuff
+  default-duration: 100
+  break-on-damage: false
+  stackable: false
+  potion-effect: WEAKNESS
+  potion-amplifier: 1
+  particle: SMOKE_NORMAL
+  particle-count: 2
+
+blind:
+  display: "<dark_gray>◼ 失明</dark_gray>"
+  icon: INK_SAC
+  effect-type: debuff
+  default-duration: 80
+  break-on-damage: false
+  stackable: false
+  potion-effect: BLINDNESS
+  potion-amplifier: 0
+  particle: SMOKE_NORMAL
+  particle-count: 2
+
+curse:
+  display: "<dark_purple>✖ 诅咒</dark_purple>"
+  icon: WITHER_ROSE
+  effect-type: debuff
+  default-duration: 200       # 10秒
+  break-on-damage: false
+  stackable: false
+  potion-effect: UNLUCK
+  potion-amplifier: 2
+  particle: WITCH
+  particle-count: 3
+
+# ══════════════════ 增益类 (buff) ══════════════════
+
+haste:
+  display: "<yellow>⚡ 加速</yellow>"
+  icon: FEATHER
+  effect-type: buff
+  default-duration: 100
+  break-on-damage: false
+  stackable: false
+  potion-effect: SPEED
+  potion-amplifier: 1
+  particle: CRIT
+  particle-count: 3
+
+strength-up:
+  display: "<red>⬆ 力量强化</red>"
+  icon: IRON_SWORD
+  effect-type: buff
+  default-duration: 200
+  break-on-damage: false
+  stackable: false
+  potion-effect: STRENGTH
+  potion-amplifier: 1
+  particle: CRIT_MAGIC
+  particle-count: 3
+
+shield:
+  display: "<white>🛡 护盾</white>"
+  icon: SHIELD
+  effect-type: buff
+  default-duration: 100
+  break-on-damage: false
+  stackable: false
+  potion-effect: ABSORPTION
+  potion-amplifier: 1
+  particle: SPELL_INSTANT
+  particle-count: 4
+
+regen:
+  display: "<green>♥ 回复</green>"
+  icon: GOLDEN_APPLE
+  effect-type: buff
+  default-duration: 100
+  break-on-damage: false
+  stackable: false
+  potion-effect: REGENERATION
+  potion-amplifier: 0
+  particle: HEART
+  particle-count: 2

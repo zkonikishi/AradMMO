@@ -1,0 +1,240 @@
+# 默认语言区域 / Default locale used when player locale is unavailable
+default-locale: zh_cn
+# 自动使用玩家客户端语言（需要客户端发送语言信息）/ Auto-detect player's client locale (requires client to report it)
+auto-player-locale: true
+
+# ── 经验/升级进度 / Experience & level progression ────────────────────────────
+progression:
+  base-exp: 100.0    # 1级升2级所需经验 / EXP required to go from level 1 to 2
+  exp-scale: 25.0    # 每级额外增加的经验需求 / additional EXP required per level
+  points:
+    stat-per-level: 3     # 每级获得的属性点 / stat points awarded per level
+    skill-per-level: 1    # 每级获得的技能点 / skill points awarded per level
+
+# ── 技能参数 / Skill parameters ────────────────────────────────────────────────
+skills:
+  slash:
+    max-level: 5
+    cooldown-seconds: 8
+    buff-duration-seconds: 5
+    mana-cost: 20
+  burst-shot:
+    max-level: 5
+    cooldown-seconds: 12
+    buff-duration-seconds: 0
+    spread: 0.12
+    mana-cost: 25
+  mana-weave:
+    max-level: 5
+    cooldown-seconds: 15
+    buff-duration-seconds: 6
+    mana-cost: 40
+  iron-will:
+    max-level: 3
+    cooldown-seconds: 20
+    buff-duration-seconds: 8
+    mana-cost: 30
+
+combat:
+  # 注意: 每点属性的加成系数已迁移至 attributes.yml
+  # Note: per-point attribute bonuses have been moved to attributes.yml
+  # 此区块保留最大/最小边界值，便于运维调整
+  # This section only holds min/max boundary values for server admin tuning
+  attributes:
+    # 受到伤害的最低倍率（0.35 = 无论多高 VIT 最多减伤 65%）
+    # Minimum incoming damage multiplier (0.35 = at most 65% reduction no matter how high VIT is)
+    minimum-incoming-multiplier: 0.35
+    # 暴击率上限（此值覆盖 attributes.yml 中计算的总暴击率）
+    # Maximum crit chance cap (overrides the calculated total crit chance from attributes.yml)
+    maximum-crit-chance: 0.45
+    # 暴击伤害基础倍率（最终暴击倍率 = 此值 + 技能加成）/ Base crit damage multiplier (final = this + skill bonuses)
+    base-crit-bonus: 0.5
+  # 战斗风格加成：每种职业风格对近战/远程/全能伤害的固定加成系数
+  # Combat style bonuses: flat damage multiplier bonus per style for melee / ranged / all-type attacks
+  styles:
+    balanced:
+      melee-bonus: 0.03
+      ranged-bonus: 0.03
+      all-bonus: 0.03
+    melee:
+      melee-bonus: 0.15
+      ranged-bonus: 0.0
+      all-bonus: 0.0
+    ranged:
+      melee-bonus: 0.0
+      ranged-bonus: 0.17
+      all-bonus: 0.0
+    magic:
+      melee-bonus: 0.0
+      ranged-bonus: 0.0
+      all-bonus: 0.10
+    tank:
+      melee-bonus: 0.06
+      ranged-bonus: 0.0
+      all-bonus: 0.0
+    assassin:
+      melee-bonus: 0.08
+      ranged-bonus: 0.08
+      all-bonus: 0.0
+  # 技能在战斗公式中的系数（passive = 始终生效，active = 技能激活期间生效）
+  # Skill combat coefficients (passive = always active, active = only while skill buff is active)
+  skills:
+    slash:
+      damage: 0.06        # 每级被动伤害加成 / passive damage bonus per level
+      active-bonus: 0.30  # 激活时额外伤害加成 / bonus damage while active
+    burst-shot:
+      damage: 0.05        # 每级被动伤害加成 / passive damage bonus per level
+    mana-weave:
+      crit-chance: 0.03        # 每级被动暴击率 / passive crit chance per level
+      crit-bonus: 0.08         # 每级被动暴击倍率 / passive crit multiplier per level
+      active-crit-chance: 0.05 # 激活时额外暴击率 / bonus crit chance while active
+      active-crit-bonus: 0.10  # 激活时额外暴击倍率 / bonus crit multiplier while active
+    iron-will:
+      reduction: 0.03          # 每级被动减伤 / passive damage reduction per level
+      active-reduction: 0.08   # 激活时额外减伤 / bonus damage reduction while active
+
+# ── 法力值 / Mana (MP) ─────────────────────────────────────────────────────────
+mana:
+  base: 100
+  per-level: 10
+  per-spirit: 5             # SPI控制最大MP（每250点翻倍）/ SPI scales max MP (doubles every 250 SPI)
+  regen-base: 5
+  regen-per-spirit: 1       # SPI控制MP回复（每250点翻倍）/ SPI scales MP regen (doubles every 250 SPI)
+
+stamina:
+  # ── 耐力条 (ST bar) — 由 STA 属性控制 / Stamina bar — scaled by STA attribute ────────
+  base: 150
+  per-level: 5
+  per-stamina: 8           # 每点STA属性增加的耐力上限 / max stamina gained per STA attribute point
+  regen-base: 10
+  regen-per-stamina: 1
+  # 耐力耗尽后恢复冲刺所需的最低ST值 / ST must reach this value before sprint is re-allowed after exhaustion
+  sprint-resume-threshold: 20
+  drain:
+    sprint: 10   # 冲刺时每秒消耗ST / ST drained per second while sprinting
+    swim:   6    # 游泳时每秒消耗ST / ST drained per second while swimming
+    glide:  15   # 滑翔（鞘翅）时每秒消耗ST / ST drained per second while gliding (elytra)
+  # ── 背包负重 (Inventory Weight) — 由等级/装备/称号决定，与 STA 无关 / determined by level/gear/title, not STA ───
+  weight:
+    base: 300                          # 1级时的基础最大负重 / base max carry weight at level 1
+    per-level: 10                      # 每级增加的额外负重 / extra carry weight per player level
+    speed-reduction-per-unit: 0.001   # 每超重1单位的移速乘数惩罚 / speed multiplier penalty per 1 excess weight unit
+    max-speed-reduction: 0.50          # 移速惩罚上限 (50%) / cap on total speed penalty (50%)
+
+# ── 生命值 / HP ───────────────────────────────────────────────────────────────
+# 最大HP公式：(base + level×per-level + vit×per-vitality) × max(1, vit/250)
+# Max HP formula: (base + level×per-level + vit×per-vitality) × max(1, vit/250)
+hp:
+  base: 20               # 基础最大HP（等同于原版 20 生命值）/ Base max HP (same as vanilla 20 health)
+  per-level: 5           # 每级增加的最大HP / Additional max HP per level
+  per-vitality: 2        # 每点VIT增加的最大HP（叠加翻倍系数）/ Flat max HP per VIT point (before VIT factor)
+  regen-base: 0.5        # 每秒基础HP回复 / Base HP regen per second
+  regen-per-vitality: 0.01  # 每点VIT增加的每秒HP回复 / Additional HP regen per second per VIT point
+
+# ── 击杀生物奖励 / Mob kill rewards ──────────────────────────────────────────
+# 击杀生物时给予攻击者的 XP 和金币。
+# XP and gold awarded to the killer when they slay a mob.
+#
+# 每种生物的奖励值（可以按 EntityType 名称添加更多条目）:
+# Per-entity-type reward values (add more entries using EntityType names):
+#   xp    — 奖励经验值 / experience awarded
+#   gold  — 奖励金币  / gold coins awarded
+#
+# 默认（default）条目作为兜底，未列出的生物使用此值。
+# The 'default' entry is the fallback for entity types not explicitly listed.
+mob-rewards:
+  # 是否取消原版 EXP 掉落（推荐 true，避免与 Minecraft 经验球冲突）
+  # Cancel vanilla EXP drops (recommended true to avoid conflict with vanilla XP orbs)
+  cancel-vanilla-exp: true
+
+  default:
+    xp: 10.0
+    gold: 1.0
+
+  ZOMBIE:
+    xp: 12.0
+    gold: 2.0
+
+  SKELETON:
+    xp: 12.0
+    gold: 2.0
+
+  CREEPER:
+    xp: 15.0
+    gold: 3.0
+
+  SPIDER:
+    xp: 10.0
+    gold: 1.5
+
+  CAVE_SPIDER:
+    xp: 12.0
+    gold: 2.0
+
+  ENDERMAN:
+    xp: 25.0
+    gold: 5.0
+
+  BLAZE:
+    xp: 20.0
+    gold: 4.0
+
+  WITCH:
+    xp: 18.0
+    gold: 3.5
+
+  ZOMBIE_VILLAGER:
+    xp: 12.0
+    gold: 2.0
+
+  DROWNED:
+    xp: 12.0
+    gold: 2.0
+
+  HUSK:
+    xp: 12.0
+    gold: 2.0
+
+  STRAY:
+    xp: 13.0
+    gold: 2.5
+
+  PILLAGER:
+    xp: 20.0
+    gold: 5.0
+
+  VINDICATOR:
+    xp: 22.0
+    gold: 6.0
+
+  RAVAGER:
+    xp: 40.0
+    gold: 15.0
+
+  EVOKER:
+    xp: 30.0
+    gold: 10.0
+
+  WITHER_SKELETON:
+    xp: 30.0
+    gold: 8.0
+
+  ELDER_GUARDIAN:
+    xp: 50.0
+    gold: 20.0
+
+  WARDEN:
+    xp: 80.0
+    gold: 30.0
+
+# ── 死亡惩罚 / Death penalty ──────────────────────────────────────────────────
+death:
+  # 扣除经验百分比（0.05 = 扣5%当前经验，不会导致降级）
+  # Percentage of current EXP lost on death (0.05 = 5%, never causes level-down)
+  exp-loss-percent: 0.05
+  # 扣除金币百分比（0.02 = 扣2%当前金币）
+  # Percentage of current gold lost on death
+  gold-loss-percent: 0.02
+  # 死亡后重生时HP恢复百分比（1.0 = 满血复活）
+  # HP percentage restored on respawn (1.0 = full heal)
+  respawn-hp-percent: 1.0

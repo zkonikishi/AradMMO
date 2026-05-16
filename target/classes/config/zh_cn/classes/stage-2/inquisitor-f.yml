@@ -1,0 +1,25 @@
+id: inquisitor-f
+
+display: "inquisitor-f"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: priest-f
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  5
+  spirit:   8
+  intellect: 17
+  vitality:  12
+
+default-skin: alex

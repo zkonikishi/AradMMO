@@ -1,0 +1,24 @@
+id: ranger-f
+
+display: "ranger-f"
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: gunner-f
+
+combat-style: ranged
+
+armor-mastery: LEATHER
+
+external: false
+
+base-attributes:
+  strength:  5
+  spirit:   17
+  intellect: 7
+  vitality:  9
+
+default-skin: alex

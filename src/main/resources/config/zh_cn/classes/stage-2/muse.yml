@@ -1,0 +1,24 @@
+id: muse
+
+display: "muse"
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: archer
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  5
+  spirit:   12
+  intellect: 14
+  vitality:  7
+
+default-skin: alex

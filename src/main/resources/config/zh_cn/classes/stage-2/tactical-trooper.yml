@@ -1,0 +1,25 @@
+id: tactical-trooper
+
+display: "tactical-trooper"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: gunner-f
+
+combat-style: ranged
+
+armor-mastery: LEATHER
+
+external: false
+
+base-attributes:
+  strength:  7
+  spirit:   14
+  intellect: 9
+  vitality:  8
+
+default-skin: alex

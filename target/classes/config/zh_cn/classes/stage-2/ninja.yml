@@ -1,0 +1,25 @@
+id: ninja
+
+display: "ninja"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: shadow
+
+combat-style: assassin
+
+armor-mastery: LEATHER
+
+external: false
+
+base-attributes:
+  strength:  9
+  spirit:   16
+  intellect: 6
+  vitality:  9
+
+default-skin: alex

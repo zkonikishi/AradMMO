@@ -1,0 +1,71 @@
+title: '<light_purple><bold>VIP 渐变特权</bold></light_purple> <gray>— %player_name%'
+rows: 6
+
+dynamic:
+  name-options-count: 3
+  chat-options-count: 3
+  name-option-slots: [20, 21, 22]
+  chat-option-slots: [29, 30, 31]
+  chat-preview-text: '勇士的聊天文本渐变预览'
+
+items:
+  filler:
+    slots: [0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,44,45,46,47,48,49,50,51,52,53]
+    item: GRAY_STAINED_GLASS_PANE
+    name: ' '
+
+  title-name:
+    slots: [10]
+    item: NAME_TAG
+    function: static
+    name: '<aqua>渐变名字（世界显示 + 聊天显示）'
+    lore:
+      - '<gray>下方随机生成多组渐变色可选'
+
+  current-name:
+    slots: [11]
+    item: BOOK
+    function: vip-current-name
+    name: '<yellow>当前名字渐变'
+    lore:
+      - '<gray>%value%'
+
+  clear-name:
+    slots: [12]
+    item: BARRIER
+    function: clear-name-gradient
+    name: '<red>清除名字渐变'
+    lore:
+      - '<gray>点击恢复默认名字颜色'
+
+  title-chat:
+    slots: [37]
+    item: WRITABLE_BOOK
+    function: static
+    name: '<gold>渐变聊天文本（VIP）'
+    lore:
+      - '<gray>下方随机生成多组渐变色可选'
+
+  current-chat:
+    slots: [38]
+    item: BOOK
+    function: vip-current-chat
+    name: '<yellow>当前聊天渐变'
+    lore:
+      - '<gray>%value%'
+
+  clear-chat:
+    slots: [39]
+    item: BARRIER
+    function: clear-chat-gradient
+    name: '<red>清除聊天渐变'
+    lore:
+      - '<gray>点击恢复默认聊天颜色'
+
+  back-profile:
+    slots: [40]
+    item: ARROW
+    function: back-profile
+    name: '<green>返回个人主页'
+    lore:
+      - '<gray>点击返回'

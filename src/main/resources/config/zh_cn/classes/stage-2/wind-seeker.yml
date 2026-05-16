@@ -1,0 +1,25 @@
+id: wind-seeker
+
+display: "wind-seeker"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: mage-m
+
+combat-style: ranged
+
+armor-mastery: LEATHER
+
+external: false
+
+base-attributes:
+  strength:  4
+  spirit:   13
+  intellect: 15
+  vitality:  6
+
+default-skin: steve

@@ -1,0 +1,25 @@
+id: asura
+
+display: "asura"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: slayer
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  14
+  spirit:   11
+  intellect: 7
+  vitality:  10
+
+default-skin: steve

@@ -1,0 +1,24 @@
+id: brawler-f
+
+display: "brawler-f"
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: fighter-f
+
+combat-style: assassin
+
+armor-mastery: LEATHER
+
+external: false
+
+base-attributes:
+  strength:  12
+  spirit:   14
+  intellect: 3
+  vitality:  13
+
+default-skin: alex

@@ -1,0 +1,25 @@
+id: nen-master-m
+
+display: "nen-master-m"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: fighter-m
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  10
+  spirit:   11
+  intellect: 11
+  vitality:  10
+
+default-skin: steve

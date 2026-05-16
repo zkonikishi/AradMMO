@@ -1,0 +1,25 @@
+id: elementalist
+
+display: "elementalist"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: mage-f
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  2
+  spirit:   7
+  intellect: 21
+  vitality:  8
+
+default-skin: alex

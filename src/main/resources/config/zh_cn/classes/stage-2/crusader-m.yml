@@ -1,0 +1,25 @@
+id: crusader-m
+
+display: "crusader-m"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: priest-m
+
+combat-style: tank
+
+armor-mastery: PLATE
+
+external: false
+
+base-attributes:
+  strength:  9
+  spirit:   6
+  intellect: 10
+  vitality:  17
+
+default-skin: steve

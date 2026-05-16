@@ -1,0 +1,25 @@
+id: summoner
+
+display: "summoner"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: mage-f
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  3
+  spirit:   6
+  intellect: 19
+  vitality:  10
+
+default-skin: alex

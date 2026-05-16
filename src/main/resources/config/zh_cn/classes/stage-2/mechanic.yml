@@ -1,0 +1,25 @@
+id: mechanic
+
+display: "mechanic"
+
+gender: male
+
+stage: 2
+
+requires-level: 20
+
+parent: gunner-m
+
+combat-style: ranged
+
+armor-mastery: LEATHER
+
+external: false
+
+base-attributes:
+  strength:  5
+  spirit:   13
+  intellect: 10
+  vitality:  10
+
+default-skin: steve

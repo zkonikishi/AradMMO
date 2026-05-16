@@ -1,0 +1,24 @@
+id: battlemage
+
+display: "battlemage"
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: mage-f
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  8
+  spirit:   8
+  intellect: 16
+  vitality:  10
+
+default-skin: alex

@@ -1,0 +1,25 @@
+id: seductress
+
+display: "seductress"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: priest-f
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  5
+  spirit:   9
+  intellect: 16
+  vitality:  12
+
+default-skin: alex

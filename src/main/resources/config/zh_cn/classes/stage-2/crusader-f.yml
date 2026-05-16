@@ -1,0 +1,25 @@
+id: crusader-f
+
+display: "crusader-f"
+
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: priest-f
+
+combat-style: tank
+
+armor-mastery: PLATE
+
+external: false
+
+base-attributes:
+  strength:  8
+  spirit:   7
+  intellect: 11
+  vitality:  16
+
+default-skin: alex

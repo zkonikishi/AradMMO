@@ -1,0 +1,24 @@
+id: sprite-dancer
+
+display: "sprite-dancer"
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: guardian
+
+combat-style: magic
+
+armor-mastery: CLOTH
+
+external: false
+
+base-attributes:
+  strength:  8
+  spirit:   9
+  intellect: 11
+  vitality:  14
+
+default-skin: alex

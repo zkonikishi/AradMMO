@@ -1,0 +1,24 @@
+id: monk-f
+
+display: "monk-f"
+gender: female
+
+stage: 2
+
+requires-level: 20
+
+parent: priest-f
+
+combat-style: melee
+
+armor-mastery: HEAVY
+
+external: false
+
+base-attributes:
+  strength:  11
+  spirit:   10
+  intellect: 9
+  vitality:  12
+
+default-skin: alex
