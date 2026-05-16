@@ -119,8 +119,8 @@ public final class EquipmentListener implements Listener {
                     return;
                 }
                 // 允许取出；延迟处理后置同
-                Bukkit.getScheduler().runTask(plugin,
-                        () -> onSlotChanged(svc, eq, player, slot));
+                Bukkit.getGlobalRegionScheduler().execute(plugin,
+                    () -> onSlotChanged(svc, eq, player, slot));
                 return;
             }
 
@@ -133,8 +133,8 @@ public final class EquipmentListener implements Listener {
                     event.setCancelled(true);
                     return;
                 }
-                Bukkit.getScheduler().runTask(plugin,
-                        () -> onSlotChanged(svc, eq, player, slot));
+                Bukkit.getGlobalRegionScheduler().execute(plugin,
+                    () -> onSlotChanged(svc, eq, player, slot));
                 return;
             }
 
@@ -147,8 +147,8 @@ public final class EquipmentListener implements Listener {
                     event.setCancelled(true);
                     return;
                 }
-                Bukkit.getScheduler().runTask(plugin,
-                        () -> onSlotChanged(svc, eq, player, slot));
+                Bukkit.getGlobalRegionScheduler().execute(plugin,
+                    () -> onSlotChanged(svc, eq, player, slot));
                 return;
             }
 

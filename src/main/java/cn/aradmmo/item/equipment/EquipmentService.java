@@ -12,6 +12,7 @@ import cn.aradmmo.item.creatures.pet.PetService;
 import cn.aradmmo.item.equipment.stat.AradArmorType;
 import cn.aradmmo.item.equipment.stat.StatApplier;
 import cn.aradmmo.item.equipment.stat.StatItemBuilder;
+import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,7 +32,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.scheduler.BukkitTask;
 
 /**
  * 装备系统核心服务
@@ -56,7 +56,7 @@ public final class EquipmentService {
     private final StatApplier     statApplier;
 
     private ItemStack          fillItem;
-    private BukkitTask         infoTask;
+    private ScheduledTask      infoTask;
     /** stat-templates.yml 加载的物品模板配置（可能null）*/
     private YamlConfiguration  statTemplatesConfig;
     private AradTemplateCatalog aradTemplateCatalog = AradTemplateCatalog.fromTemplates(null);
@@ -105,13 +105,13 @@ public final class EquipmentService {
 
     public void reload() {
         // 提取默认配置
-        extractDefault("item/equipment/slots.yml",     "equipment/slots.yml");
-        extractDefault("item/equipment/backpacks.yml", "equipment/backpacks.yml");
-        extractDefault("item/creatures/pet/pets.yml",  "creatures/pets.yml");
-        extractDefault("item/equipment/armor/system.yml", "equipment/armor/system.yml");
+        extractDefault("item/equipment/slots.yml",     "item/equipment/slots.yml");
+        extractDefault("item/equipment/backpacks.yml", "item/equipment/backpacks.yml");
+        extractDefault("item/creatures/pet/pets.yml",  "item/creatures/pets.yml");
+        extractDefault("item/equipment/armor/system.yml", "item/equipment/armor/system.yml");
 
         // 加载槽位定义
-        File slotsFile = new File(plugin.getDataFolder(), "equipment/slots.yml");
+        File slotsFile = plugin.itemFile("equipment/slots.yml");
         YamlConfiguration slotsConfig = YamlConfiguration.loadConfiguration(slotsFile);
         slotManager.load(slotsConfig);
 
@@ -130,24 +130,25 @@ public final class EquipmentService {
         petService.reload();
 
         // 加载装备属性模板
-        extractDefault("item/equipment/stat-templates.yml", "equipment/stat-templates.yml");
-        extractDefault("item/equipment/weapons/templates.yml", "equipment/weapons/templates.yml");
-        extractDefault("item/equipment/armor/templates.yml", "equipment/armor/templates.yml");
-        extractDefault("item/equipment/accessories/templates.yml", "equipment/accessories/templates.yml");
-        extractDefault("item/equipment/special equipment/templates.yml", "equipment/special equipment/templates.yml");
-        extractDefault("item/equipment/titles/templates.yml", "equipment/titles/templates.yml");
-        extractDefault("item/equipment/equipment fusion/templates.yml", "equipment/equipment fusion/templates.yml");
+        extractDefault("item/equipment/stat-templates.yml", "item/equipment/stat-templates.yml");
+        extractDefault("item/equipment/weapons/templates.yml", "item/equipment/weapons/templates.yml");
+        extractDefault("item/equipment/armor/templates.yml", "item/equipment/armor/templates.yml");
+        extractDefault("item/equipment/accessories/templates.yml", "item/equipment/accessories/templates.yml");
+        extractDefault("item/equipment/special equipment/templates.yml", "item/equipment/special equipment/templates.yml");
+        extractDefault("item/equipment/titles/templates.yml", "item/equipment/titles/templates.yml");
+        extractDefault("item/equipment/equipment fusion/templates.yml", "item/equipment/equipment fusion/templates.yml");
         statTemplatesConfig = loadTemplateConfigs();
         aradTemplateCatalog = AradTemplateCatalog.fromTemplates(statTemplatesConfig);
 
-        File armorSystem = new File(plugin.getDataFolder(), "equipment/armor/system.yml");
+        File armorSystem = plugin.itemFile("equipment/armor/system.yml");
         statApplier.reloadArmorSystem(YamlConfiguration.loadConfiguration(armorSystem));
     }
 
     /** 启动2 秒刷INFO 槽位的定时器*/
     public void startInfoUpdater() {
-        if (infoTask != null && !infoTask.isCancelled()) infoTask.cancel();
-        infoTask = Bukkit.getScheduler().runTaskTimer(plugin, this::refreshInfoSlots, 40L, 40L);
+        if (infoTask != null) infoTask.cancel();
+        infoTask = plugin.getServer().getGlobalRegionScheduler()
+                .runAtFixedRate(plugin, task -> refreshInfoSlots(), 40L, 40L);
         petService.startTicker();
     }
 
@@ -416,7 +417,7 @@ public final class EquipmentService {
     }
 
     private File playerFile(UUID uuid) {
-        return new File(plugin.getDataFolder(), "equipment/players/" + uuid + ".yml");
+        return plugin.itemFile("equipment/players/" + uuid + ".yml");
     }
 
     // ── Util ──────────────────────────────────────────────────────────────────
@@ -438,7 +439,7 @@ public final class EquipmentService {
 
     private YamlConfiguration loadTemplateConfigs() {
         YamlConfiguration merged = new YamlConfiguration();
-        File root = new File(plugin.getDataFolder(), "equipment");
+        File root = plugin.itemFile("equipment");
         List<File> allYaml = listYamlFiles(root);
 
         // 优先按子目录分类文件，若不存在则回退 legacy 单文件。

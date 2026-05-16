@@ -39,8 +39,8 @@ public final class BackpackService {
 
     public void reload() {
         defs.clear();
-        File file = new File(plugin.getDataFolder(), "equipment/backpacks.yml");
-        if (!file.exists()) plugin.saveResource("equipment/backpacks.yml", false);
+        File file = plugin.itemFile("equipment/backpacks.yml");
+        if (!file.exists()) plugin.saveResource("item/equipment/backpacks.yml", false);
         YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
         ConfigurationSection bps = config.getConfigurationSection("backpacks");
         if (bps == null) return;
@@ -141,8 +141,7 @@ public final class BackpackService {
     }
 
     private File backpackFile(UUID ownerUuid, String defId) {
-        return new File(plugin.getDataFolder(),
-                "equipment/backpacks/" + ownerUuid + "/" + defId + ".yml");
+        return plugin.itemFile("equipment/backpacks/" + ownerUuid + "/" + defId + ".yml");
     }
 }
 

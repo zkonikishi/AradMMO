@@ -81,6 +81,7 @@ cn\aradmmo\item\equipment\reinforce\ReinforceGui.class
 cn\aradmmo\item\equipment\stat\StatApplier$MasteryPassiveContext.class
 cn\aradmmo\core\chat\ChatRenderContext.class
 cn\aradmmo\rpg\profile\PlayerProfile.class
+cn\aradmmo\core\AradMmoPlugin$1.class
 cn\aradmmo\core\chat\ChatClickType.class
 cn\aradmmo\rpg\status\StatusEffectDefinition.class
 cn\aradmmo\core\command\AmCommand$1.class

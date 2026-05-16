@@ -2,12 +2,12 @@ package cn.aradmmo.rpg.mana;
 
 import cn.aradmmo.core.AradMmoPlugin;
 import cn.aradmmo.rpg.profile.PlayerProfile;
+import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitTask;
 
 /**
  * Runtime MP tracking service.
@@ -31,7 +31,7 @@ public final class ManaService {
 
     private final AradMmoPlugin plugin;
     private final Map<UUID, Integer> current = new HashMap<>();
-    private BukkitTask regenTask;
+    private ScheduledTask regenTask;
 
     public ManaService(AradMmoPlugin plugin) {
         this.plugin = plugin;
@@ -41,8 +41,9 @@ public final class ManaService {
 
     /** Starts the 1-second regen ticker. Call once after plugin enable. */
     public void startTicker() {
-        if (regenTask != null && !regenTask.isCancelled()) regenTask.cancel();
-        regenTask = Bukkit.getScheduler().runTaskTimer(plugin, this::tick, 20L, 20L);
+        if (regenTask != null) regenTask.cancel();
+        regenTask = plugin.getServer().getGlobalRegionScheduler()
+                .runAtFixedRate(plugin, task -> tick(), 20L, 20L);
     }
 
     /** Stops the ticker and clears all runtime data. */

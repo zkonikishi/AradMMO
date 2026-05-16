@@ -35,6 +35,9 @@ import cn.aradmmo.item.creatures.mount.MountService;
 import cn.aradmmo.item.creatures.pet.PetListener;
 import cn.aradmmo.item.creatures.pet.PetSkillGuiListener;
 import cn.aradmmo.rpg.status.StatusEffectService;
+import io.papermc.paper.command.brigadier.BasicCommand;
+import io.papermc.paper.command.brigadier.CommandSourceStack;
+import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,12 +47,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import org.bukkit.Bukkit;
-import org.bukkit.command.PluginCommand;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitTask;
 
 public final class AradMmoPlugin extends JavaPlugin {
     private static final String DEFAULT_LOCALE = "zh_cn";
@@ -79,7 +81,7 @@ public final class AradMmoPlugin extends JavaPlugin {
     private PlayerCosmeticColorService cosmeticColorService;
     private ChatService chatService;
     private ChatBungeeBridge chatBungeeBridge;
-    private BukkitTask nameStyleTask;
+    private ScheduledTask nameStyleTask;
 
     @Override
     public void onEnable() {
@@ -344,6 +346,14 @@ public final class AradMmoPlugin extends JavaPlugin {
         return new File(localizedConfigDirectory(locale), relativePath);
     }
 
+    public File itemRootDirectory() {
+        return new File(getDataFolder(), "item");
+    }
+
+    public File itemFile(String relativePath) {
+        return new File(itemRootDirectory(), relativePath);
+    }
+
     public List<String> availableConfigLocales() {
         File[] directories = configRootDirectory().listFiles(File::isDirectory);
         if (directories == null || directories.length == 0) {
@@ -358,7 +368,23 @@ public final class AradMmoPlugin extends JavaPlugin {
     private void bootstrapConfigTree() {
         ensureBootstrapConfig();
         migrateLegacyConfigTree();
-        extractBundledConfigTree();
+        migrateLegacyItemTree();
+        extractBundledResourceTrees();
+    }
+
+    private void migrateLegacyItemTree() {
+        migrateLegacyFolderToItem("equipment", "equipment");
+        migrateLegacyFolderToItem("creatures", "creatures");
+        migrateLegacyFolderToItem("pets", "pets");
+    }
+
+    private void migrateLegacyFolderToItem(String legacyRelative, String itemRelative) {
+        File legacyDir = new File(getDataFolder(), legacyRelative);
+        if (!legacyDir.exists()) {
+            return;
+        }
+        File itemDir = itemFile(itemRelative);
+        copyMissingTree(legacyDir, itemDir);
     }
 
     private void ensureBootstrapConfig() {
@@ -426,11 +452,16 @@ public final class AradMmoPlugin extends JavaPlugin {
         copyMissingTree(legacyDir, localizedDir);
     }
 
-    private void extractBundledConfigTree() {
+    private void extractBundledResourceTrees() {
         try (var jar = new java.util.jar.JarFile(getFile())) {
             jar.entries().asIterator().forEachRemaining(entry -> {
                 String name = entry.getName();
-                if (entry.isDirectory() || !name.startsWith("config/")) {
+                if (entry.isDirectory()) {
+                    return;
+                }
+                boolean isConfig = name.startsWith("config/");
+                boolean isItem = name.startsWith("item/");
+                if (!isConfig && !isItem) {
                     return;
                 }
                 File out = new File(getDataFolder(), name);
@@ -450,7 +481,7 @@ public final class AradMmoPlugin extends JavaPlugin {
                 }
             });
         } catch (Exception exception) {
-            getLogger().warning("Failed to extract config tree: " + exception.getMessage());
+            getLogger().warning("Failed to extract bundled resource trees: " + exception.getMessage());
         }
     }
 
@@ -517,13 +548,21 @@ public final class AradMmoPlugin extends JavaPlugin {
     }
 
     private void registerCommands() {
-        PluginCommand command = getCommand("am");
-        if (command == null) {
-            throw new IllegalStateException("Command /am is not defined in paper-plugin.yml");
-        }
         AmCommand executor = new AmCommand(this);
-        command.setExecutor(executor);
-        command.setTabCompleter(executor);
+        registerCommand("am", "Arad MMO command root", List.of("aradmmo"), new BasicCommand() {
+            @Override
+            public void execute(CommandSourceStack stack, String[] args) {
+                CommandSender sender = stack.getSender();
+                executor.onCommand(sender, null, "am", args);
+            }
+
+            @Override
+            public java.util.Collection<String> suggest(CommandSourceStack stack, String[] args) {
+                CommandSender sender = stack.getSender();
+                List<String> suggestions = executor.onTabComplete(sender, null, "am", args);
+                return suggestions == null ? List.of() : suggestions;
+            }
+        });
     }
 
     private void registerListeners() {
@@ -545,10 +584,10 @@ public final class AradMmoPlugin extends JavaPlugin {
     }
 
     private void startNameStyleUpdater() {
-        if (this.nameStyleTask != null && !this.nameStyleTask.isCancelled()) {
+        if (this.nameStyleTask != null) {
             this.nameStyleTask.cancel();
         }
-        this.nameStyleTask = Bukkit.getScheduler().runTaskTimer(this, () -> {
+        this.nameStyleTask = getServer().getGlobalRegionScheduler().runAtFixedRate(this, task -> {
             if (this.cosmeticColorService == null) return;
             for (org.bukkit.entity.Player online : Bukkit.getOnlinePlayers()) {
                 this.cosmeticColorService.applyNameStyle(online);

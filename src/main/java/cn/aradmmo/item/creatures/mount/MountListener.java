@@ -49,7 +49,7 @@ public final class MountListener implements Listener {
         java.util.UUID owner = plugin.mounts().getOwner(mount);
         if (!rider.getUniqueId().equals(owner)) return;
         // Brief mount-up message. Delayed one tick so the ride is registered.
-        org.bukkit.Bukkit.getScheduler().runTaskLater(plugin, () -> {
+        org.bukkit.Bukkit.getGlobalRegionScheduler().runDelayed(plugin, task -> {
             if (rider.isOnline()) rider.sendMessage("§6[Mount] §bYou are riding your mount!");
         }, 2L);
     }

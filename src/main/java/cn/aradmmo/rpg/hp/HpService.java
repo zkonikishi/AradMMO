@@ -2,11 +2,11 @@ package cn.aradmmo.rpg.hp;
 
 import cn.aradmmo.core.AradMmoPlugin;
 import cn.aradmmo.rpg.profile.PlayerProfile;
+import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitTask;
 
 /**
  * Runtime HP service syncs Minecraft's {@code MAX_HEALTH} attribute to the
@@ -35,7 +35,7 @@ import org.bukkit.scheduler.BukkitTask;
 public final class HpService {
 
     private final AradMmoPlugin plugin;
-    private BukkitTask regenTask;
+    private ScheduledTask regenTask;
 
     public HpService(AradMmoPlugin plugin) {
         this.plugin = plugin;
@@ -45,8 +45,9 @@ public final class HpService {
 
     /** Starts the 1-second HP regen ticker. */
     public void startTicker() {
-        if (regenTask != null && !regenTask.isCancelled()) regenTask.cancel();
-        regenTask = Bukkit.getScheduler().runTaskTimer(plugin, this::tick, 20L, 20L);
+        if (regenTask != null) regenTask.cancel();
+        regenTask = plugin.getServer().getGlobalRegionScheduler()
+                .runAtFixedRate(plugin, task -> tick(), 20L, 20L);
     }
 
     /** Stops the ticker. */

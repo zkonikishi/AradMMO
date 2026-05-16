@@ -2,6 +2,7 @@ package cn.aradmmo.rpg.stamina;
 
 import cn.aradmmo.core.AradMmoPlugin;
 import cn.aradmmo.rpg.profile.PlayerProfile;
+import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +17,6 @@ import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitTask;
 
 /**
  * Runtime Stamina (ST) tracking service.
@@ -67,7 +67,7 @@ public final class StaminaService {
     private final Map<UUID, Integer> current = new HashMap<>();
     /** Players who are exhausted and cannot sprint until threshold is met. */
     private final Map<UUID, Boolean> exhausted = new HashMap<>();
-    private BukkitTask tickTask;
+    private ScheduledTask tickTask;
 
     public StaminaService(AradMmoPlugin plugin) {
         this.plugin = plugin;
@@ -77,8 +77,9 @@ public final class StaminaService {
 
     /** Starts the stamina tick (every 4 server ticks = 0.2 s). */
     public void startTicker() {
-        if (tickTask != null && !tickTask.isCancelled()) tickTask.cancel();
-        tickTask = Bukkit.getScheduler().runTaskTimer(plugin, this::tick, 4L, 4L);
+        if (tickTask != null) tickTask.cancel();
+        tickTask = plugin.getServer().getGlobalRegionScheduler()
+                .runAtFixedRate(plugin, task -> tick(), 4L, 4L);
     }
 
     /** Stops the ticker and clears runtime data. */

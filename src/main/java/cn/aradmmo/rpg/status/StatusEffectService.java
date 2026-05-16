@@ -11,10 +11,10 @@ import java.util.Set;
 import java.util.StringJoiner;
 import java.util.UUID;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
-import org.bukkit.scheduler.BukkitTask;
 
 /**
  * Manages all active status effects for players.
@@ -47,8 +47,8 @@ public final class StatusEffectService {
     /** Per-player active effects: UUID (effectId instance). */
     private final Map<UUID, Map<String, ActiveStatusEffect>> active = new HashMap<>();
 
-    private BukkitTask tickTask;
-    private BukkitTask actionBarTask;
+    private ScheduledTask tickTask;
+    private ScheduledTask actionBarTask;
 
     public StatusEffectService(AradMmoPlugin plugin) {
         this.plugin = plugin;
@@ -73,16 +73,18 @@ public final class StatusEffectService {
 
     /** Starts the per-tick processing task. Call once after reload. */
     public void startTicker() {
-        if (tickTask != null && !tickTask.isCancelled()) {
+        if (tickTask != null) {
             tickTask.cancel();
         }
-        tickTask = Bukkit.getScheduler().runTaskTimer(plugin, this::tick, 1L, 1L);
+        tickTask = plugin.getServer().getGlobalRegionScheduler()
+                .runAtFixedRate(plugin, task -> tick(), 1L, 1L);
 
-        if (actionBarTask != null && !actionBarTask.isCancelled()) {
+        if (actionBarTask != null) {
             actionBarTask.cancel();
         }
         // Update ActionBar every 20 ticks (1 second)
-        actionBarTask = Bukkit.getScheduler().runTaskTimer(plugin, this::showActionBar, 20L, 20L);
+        actionBarTask = plugin.getServer().getGlobalRegionScheduler()
+                .runAtFixedRate(plugin, task -> showActionBar(), 20L, 20L);
     }
 
     /** Stops the ticker and clears all active effects (called on plugin disable). */

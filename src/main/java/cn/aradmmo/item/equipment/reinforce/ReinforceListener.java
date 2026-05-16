@@ -25,7 +25,7 @@ public class ReinforceListener implements Listener {
         if (slot == ReinforceGui.SLOT_ITEM) {
             event.setCancelled(false);
             // 延迟一 tick 后刷新信息显示
-            org.bukkit.Bukkit.getScheduler().runTask(
+            org.bukkit.Bukkit.getGlobalRegionScheduler().execute(
                     event.getHandlers().getRegisteredListeners()[0].getPlugin(),
                     () -> {
                         ItemStack placed = gui.getInventory().getItem(ReinforceGui.SLOT_ITEM);

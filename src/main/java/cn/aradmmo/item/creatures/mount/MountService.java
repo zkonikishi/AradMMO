@@ -40,10 +40,10 @@ public final class MountService {
         defs.clear();
         active.clear();
 
-        extractDefault("item/creatures/mount/mounts.yml", "creatures/mounts.yml");
-        File file = new File(plugin.getDataFolder(), "creatures/mounts.yml");
+        extractDefault("item/creatures/mount/mounts.yml", "item/creatures/mounts.yml");
+        File file = plugin.itemFile("creatures/mounts.yml");
         if (!file.exists()) {
-            plugin.getLogger().warning("[Mount] creatures/mounts.yml not found in data folder");
+            plugin.getLogger().warning("[Mount] item/creatures/mounts.yml not found in data folder");
             return;
         }
 

@@ -62,7 +62,7 @@ public final class PetListener implements Listener {
         if (pet == null || pet.isDead()) return;
         // 延迟一 tick 等玩家完成传送后再移动宠
         Player player = event.getPlayer();
-        org.bukkit.Bukkit.getScheduler().runTaskLater(plugin, () -> {
+        org.bukkit.Bukkit.getGlobalRegionScheduler().runDelayed(plugin, task -> {
             if (player.isOnline() && !pet.isDead()) {
                 pet.teleport(player.getLocation());
             }

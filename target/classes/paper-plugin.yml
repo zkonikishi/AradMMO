@@ -78,8 +78,3 @@ permissions:
     description: Allow toggling personal chat receive state
     default: true
 
-commands:
-  am:
-    description: Arad MMO command root
-    usage: /am <help|reload|lang|profile|addxp|money|vip|class|stats|stat|resetstats|skills|skill|cast|menu|equip|reinforce|item|pet|mount|top|gender|element|vipcolor|chat>
-    aliases: [aradmmo]

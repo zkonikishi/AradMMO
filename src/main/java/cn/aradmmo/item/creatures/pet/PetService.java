@@ -4,6 +4,7 @@ import cn.aradmmo.core.AradMmoPlugin;
 import cn.aradmmo.item.equipment.PlayerEquipment;
 import cn.aradmmo.item.equipment.SlotDef;
 import cn.aradmmo.item.equipment.SlotType;
+import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,7 +36,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.scheduler.BukkitTask;
 
 /**
  * Companion runtime service.
@@ -51,7 +51,7 @@ public final class PetService {
     private final Map<UUID, ActivePetState> activeByOwner = new HashMap<>();
 
     private File profileDirectory;
-    private BukkitTask aiTask;
+    private ScheduledTask aiTask;
 
     public PetService(AradMmoPlugin plugin) {
         this.plugin = plugin;
@@ -61,9 +61,9 @@ public final class PetService {
         defs.clear();
         activeByOwner.clear();
 
-        File file = new File(plugin.getDataFolder(), "creatures/pets.yml");
+        File file = plugin.itemFile("creatures/pets.yml");
         if (!file.exists()) {
-            plugin.getLogger().warning("[Pet] creatures/pets.yml not found in data folder");
+            plugin.getLogger().warning("[Pet] item/creatures/pets.yml not found in data folder");
         }
         YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
         ConfigurationSection pets = config.getConfigurationSection("pets");
@@ -74,13 +74,14 @@ public final class PetService {
             }
         }
 
-        profileDirectory = new File(plugin.getDataFolder(), "pets/profiles");
+        profileDirectory = plugin.itemFile("pets/profiles");
         if (!profileDirectory.exists()) profileDirectory.mkdirs();
     }
 
     public void startTicker() {
-        if (aiTask != null && !aiTask.isCancelled()) aiTask.cancel();
-        aiTask = org.bukkit.Bukkit.getScheduler().runTaskTimer(plugin, this::tickCompanionAi, 20L, 20L);
+        if (aiTask != null) aiTask.cancel();
+        aiTask = plugin.getServer().getGlobalRegionScheduler()
+                .runAtFixedRate(plugin, task -> tickCompanionAi(), 20L, 20L);
     }
 
     public void shutdown() {
@@ -460,7 +461,7 @@ public final class PetService {
 
     private PetCompanionProfile loadProfile(UUID owner, String petId, PetDef def) {
         if (profileDirectory == null) {
-            profileDirectory = new File(plugin.getDataFolder(), "pets/profiles");
+            profileDirectory = plugin.itemFile("pets/profiles");
             profileDirectory.mkdirs();
         }
         File file = new File(profileDirectory, owner + ".yml");
@@ -514,7 +515,7 @@ public final class PetService {
 
     private void saveProfile(UUID owner, String petId, PetCompanionProfile profile) {
         if (profileDirectory == null) {
-            profileDirectory = new File(plugin.getDataFolder(), "pets/profiles");
+            profileDirectory = plugin.itemFile("pets/profiles");
             profileDirectory.mkdirs();
         }
         File file = new File(profileDirectory, owner + ".yml");
